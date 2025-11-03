@@ -10,36 +10,35 @@ if os.path.exists(filename):
         try:
             data = json.load(file)
         except json.JSONDecodeError:
-            data = []  # Empty or invalid file — start fresh
+            data = []  # If file is empty or invalid
 else:
-    data = []  # File doesn’t exist yet
+    data = []
 
+# Step 2: Ask for name until it's unique
+while True:
+    name = input("Enter your name: ")
+    if any(user["name"].lower() == name.lower() for user in data):
+        print(f"⚠️ The name '{name}' is already taken. Please enter a different name.")
+    else:
+        break
 
-# Step 2: Determine the next user ID
-if data:
-    last_id = max(user["id"] for user in data)
-else:
-    last_id = 0
-
-next_id = last_id + 1
-
-# Step 3: Ask for new user info
-name = input("Enter your name: ")
+# Step 3: Ask for other info
 age = int(input("Enter your age: "))
 email = input("Enter your email: ")
+password = input("Enter your password: ")
 
 # Step 4: Create new user record
 new_user = {
-    "id": next_id,
     "name": name,
     "age": age,
-    "email": email
+    "email": email,
+    "password" : password
 }
 
-# Step 5: Append new data and save
+# Step 5: Append and save
 data.append(new_user)
 
 with open(filename, "w") as file:
     json.dump(data, file, indent=4)
 
-print(f"✅ New user added successfully with ID {next_id}!")
+print(f"✅ New user '{name}' added successfully!")
