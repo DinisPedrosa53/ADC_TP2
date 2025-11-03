@@ -11,7 +11,11 @@ def printPontos(ficheiro="equipas.json"):
             print("Ficheiro não encontrado.")
 
         for equipa in dados:
-            print(f"Equipa: {equipa['nome']}, Vitórias: {equipa['vitorias']}, Corridas: {equipa['corridas']}")
+            print(f"Equipa: {equipa['nome']}, Pontos: {equipa['pontos']}")
+
+        for piloto in dados:
+            print(f"Piloto: {piloto['piloto1']}, Pontos: {piloto['pontosPiloto1']}")
+            print(f"Piloto: {piloto['piloto2']}, Pontos: {piloto['pontosPiloto2']}")
 
 
 
