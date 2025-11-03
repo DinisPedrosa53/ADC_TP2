@@ -13,9 +13,7 @@ def obter_dados():
     dados["patrocinadores"] = input("Digite os principais patrocinadores (separados por vírgula): ")
     dados["vitorias"] = input("Digite o número total de vitórias: ")
     dados["corridas"] = input("Digite o número total de corridas participadas: ")
-    dados["pontos"] = input("Digite o número de pontos: ")
-    dados["pontosPiloto1"] = input("Digite o número de pontos do piloto principal: ")
-    dados["pontosPiloto2"] = input("Digite o número de pontos do piloto secundário: ")
+    dados["pontosEquipa"] = input("Digite o número de pontos: ")
     
     return dados
 
