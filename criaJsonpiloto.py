@@ -11,6 +11,7 @@ def obter_dados():
     dados["telefone"] = input("Digite o número de telefone do piloto: ")
     dados["morada"] = input("Digite a morada do piloto: ")
     dados["equipa_atual"] = input("Digite a equipa que o piloto se encontra atualmente: ")
+    dados["pontosPiloto"] = input("Digite o número de pontos do piloto principal: ")
     
     return dados
 

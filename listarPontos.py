@@ -1,21 +1,35 @@
 import json
 import os
 
-def listarPontos(ficheiro="equipas.json"):
-        if os.path.exists(ficheiro):
+def listarPontos(equipas="equipas.json", pilotos="pilotos.json"):
+        if os.path.exists(equipas):
         # Se o ficheiro existe, abre e carrega os dados existentes
-            with open(ficheiro, "r", encoding="utf-8") as file:
-                dados = json.load(file)
-            return dados
+            with open(equipas, "r", encoding="utf-8") as file:
+                dadosEquipas = json.load(file)
+            return dadosEquipas
         else:
             print("Ficheiro não encontrado.")
 
-        for equipa in dados:
+        if os.path.exists(pilotos):
+        # Se o ficheiro existe, abre e carrega os dados existentes
+            with open(pilotos, "r", encoding="utf-8") as file:
+                dadosPilotos = json.load(file)
+            return dadosPilotos
+        else:
+            print("Ficheiro não encontrado.")
+
+        
+
+        # Ordenar equipas por pontos (decrescente)
+        dadosEquipas_ordenado = sorted(dadosEquipas, key=lambda x: x['pontos'], reverse=True)
+        for equipa in dadosEquipas_ordenado:
             print(f"Equipa: {equipa['nome']}, Pontos: {equipa['pontos']}")
 
-        for piloto in dados:
-            print(f"Piloto: {piloto['piloto1']}, Pontos: {piloto['pontosPiloto1']}")
-            print(f"Piloto: {piloto['piloto2']}, Pontos: {piloto['pontosPiloto2']}")
+        # Ordenar pilotos por pontos (decrescente)
+        dadosPilotos_ordenado = sorted(dadosPilotos, key=lambda x: x['pontosPiloto'], reverse=True)
+        for piloto in dadosPilotos_ordenado:
+            print(f"Piloto: {piloto['piloto']}, Pontos: {piloto['pontosPiloto']}")
+
 
 
 
