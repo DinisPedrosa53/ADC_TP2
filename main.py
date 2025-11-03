@@ -1,8 +1,10 @@
 # Ficheiro main do projeto
+import os
 import json
 from criaJsonequipas import criar_equipa
 
 while True:
+    os.system("cls")
     print("Menu")
     print("Opções")
     print("1-Utilizadores")
@@ -13,12 +15,14 @@ while True:
     opcao1 = input("Escolha: ")
 
     if opcao1 == "1":
+        os.system("cls")
         print("Menu -> Utilizadores")
         print("Opções")
         print("1- Criar")
         print("2- Listar")
         opcao2 = input("Escolha: ")
     elif opcao1 == "2":
+        os.system("cls")
         print("Menu -> Equipas")
         print("Opções")
         print("1- Criar")
@@ -28,8 +32,12 @@ while True:
         if opcao2 == "1":
             criar_equipa()
 
+        if opcao2 == "2":
+            from listarPontos import listarPontos
+            listarPontos()
 
     elif opcao1 == "3":
+        os.system("cls")
         print("Menu -> Pilotos")
         print("Opções")
         print("1- Criar")
