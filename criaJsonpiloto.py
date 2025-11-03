@@ -12,6 +12,8 @@ def obter_dados():
     dados["morada"] = input("Digite a morada do piloto: ")
     dados["equipa_atual"] = input("Digite a equipa que o piloto se encontra atualmente: ")
     dados["pontosPiloto"] = input("Digite o número de pontos do piloto principal: ")
+    dados["vitorias"] = input("Digite o número de vitórias do piloto: ")
+    dados["salario"] = input("Digite o salário anual do piloto (em euros): ")
     
     return dados
 
@@ -37,9 +39,6 @@ def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
 
 
 # Função principal para adicionar um piloto
-def main():
+def criar_piloto():
     novo_piloto = obter_dados()
     adicionar_piloto_ao_ficheiro(novo_piloto)
-
-# Chamada principal
-main()
