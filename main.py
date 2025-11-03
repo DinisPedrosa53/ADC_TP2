@@ -2,7 +2,9 @@
 import os
 import json
 from criaJsonequipas import criar_equipa
+from listarJsonequipas import listagem_equipas
 
+# Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
     os.system("cls")
     print("Menu")
@@ -31,10 +33,12 @@ while True:
 
         if opcao2 == "1":
             criar_equipa()
-
-        if opcao2 == "2":
-            from listarPontos import listarPontos
-            listarPontos()
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_equipas()
+            print("")
+            input("Enter para continuar...")
+            
 
     elif opcao1 == "3":
         os.system("cls")
