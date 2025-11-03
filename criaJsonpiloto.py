@@ -39,9 +39,6 @@ def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
 
 
 # Função principal para adicionar um piloto
-def main():
+def criar_piloto():
     novo_piloto = obter_dados()
     adicionar_piloto_ao_ficheiro(novo_piloto)
-
-# Chamada principal
-main()

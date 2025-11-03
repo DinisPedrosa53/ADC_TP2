@@ -2,6 +2,8 @@
 import os
 import json
 from criaJsonequipas import criar_equipa
+from criaJsonpiloto import criar_piloto
+from listarPontos import *
 
 while True:
     os.system("cls")
@@ -33,8 +35,7 @@ while True:
             criar_equipa()
 
         if opcao2 == "2":
-            from listarPontos import listarPontos
-            listarPontos()
+            listarPontosEquipas()
 
     elif opcao1 == "3":
         os.system("cls")
@@ -43,6 +44,13 @@ while True:
         print("1- Criar")
         print("2- Listar")
         opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            criar_piloto()
+
+        if opcao2 == "2":
+            listarPontosPilotos()
+            
     elif opcao1 == "0":
             print("Saindo... Até logo!")
             break  # Sai do loop e termina o programa
