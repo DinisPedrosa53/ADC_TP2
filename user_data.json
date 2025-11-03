@@ -1,8 +1,14 @@
 [
     {
-        "id": 1,
-        "name": "Roberto",
-        "age": 42,
-        "email": "escama@escama.pt"
+        "name": "Rafa",
+        "age": 19,
+        "email": "rafa.hp2006@gmail.com",
+        "password": "Rafa2006"
+    },
+    {
+        "name": "Escama",
+        "age": 43,
+        "email": "escama@escama.pt",
+        "password": "escama"
     }
 ]
