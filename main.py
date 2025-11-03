@@ -46,10 +46,6 @@ while True:
         if opcao2 == "1":
             os.system("cls")
             criar_equipa()
-
-        elif opcao2 == "2":
-            os.system("cls")
-            listarPontosEquipas()
         elif opcao2 == "2":
             os.system("cls")
             listagem_equipas()
