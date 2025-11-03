@@ -39,9 +39,6 @@ def adicionar_equipa_ao_ficheiro(nova_equipa, ficheiro="equipas.json"):
 
 
 # Função principal para adicionar uma equipa
-def main():
+def criar_equipa():
     nova_equipa = obter_dados()
     adicionar_equipa_ao_ficheiro(nova_equipa)
-
-# Chamada principal
-main()

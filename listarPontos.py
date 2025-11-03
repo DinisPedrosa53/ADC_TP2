@@ -20,10 +20,14 @@ def listarPontos(equipas="equipas.json", pilotos="pilotos.json"):
 
         
 
-        for equipa in dadosEquipas:
+        # Ordenar equipas por pontos (decrescente)
+        dadosEquipas_ordenado = sorted(dadosEquipas, key=lambda x: x['pontos'], reverse=True)
+        for equipa in dadosEquipas_ordenado:
             print(f"Equipa: {equipa['nome']}, Pontos: {equipa['pontos']}")
 
-        for piloto in dadosPilotos:
+        # Ordenar pilotos por pontos (decrescente)
+        dadosPilotos_ordenado = sorted(dadosPilotos, key=lambda x: x['pontosPiloto'], reverse=True)
+        for piloto in dadosPilotos_ordenado:
             print(f"Piloto: {piloto['piloto']}, Pontos: {piloto['pontosPiloto']}")
 
 
