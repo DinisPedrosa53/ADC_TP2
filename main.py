@@ -2,6 +2,8 @@
 import os
 import json
 from criaJsonequipas import criar_equipa
+from criaJsonpiloto import criar_piloto
+from listarPontos import *
 from listarJsonequipas import listagem_equipas
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
@@ -23,6 +25,16 @@ while True:
         print("1- Criar")
         print("2- Listar")
         opcao2 = input("Escolha: ")
+        if opcao2 == "1":
+            os.system("cls")
+            # Chamar função para criar utilizador
+            pass  # Placeholder for user creation function
+
+        elif opcao2 == "2":
+            os.system("cls")
+            # Chamar função para listar utilizadores
+            pass  # Placeholder for user listing function
+        
     elif opcao1 == "2":
         os.system("cls")
         print("Menu -> Equipas")
@@ -32,7 +44,12 @@ while True:
         opcao2 = input("Escolha: ")  
 
         if opcao2 == "1":
+            os.system("cls")
             criar_equipa()
+
+        elif opcao2 == "2":
+            os.system("cls")
+            listarPontosEquipas()
         elif opcao2 == "2":
             os.system("cls")
             listagem_equipas()
@@ -47,6 +64,15 @@ while True:
         print("1- Criar")
         print("2- Listar")
         opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            criar_piloto()
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            listarPontosPilotos()
+            
     elif opcao1 == "0":
             print("Saindo... Até logo!")
             break  # Sai do loop e termina o programa
