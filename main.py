@@ -23,6 +23,16 @@ while True:
         print("1- Criar")
         print("2- Listar")
         opcao2 = input("Escolha: ")
+        if opcao2 == "1":
+            os.system("cls")
+            # Chamar função para criar utilizador
+            pass  # Placeholder for user creation function
+
+        elif opcao2 == "2":
+            os.system("cls")
+            # Chamar função para listar utilizadores
+            pass  # Placeholder for user listing function
+        
     elif opcao1 == "2":
         os.system("cls")
         print("Menu -> Equipas")
@@ -32,9 +42,11 @@ while True:
         opcao2 = input("Escolha: ")  
 
         if opcao2 == "1":
+            os.system("cls")
             criar_equipa()
 
-        if opcao2 == "2":
+        elif opcao2 == "2":
+            os.system("cls")
             listarPontosEquipas()
 
     elif opcao1 == "3":
@@ -46,9 +58,11 @@ while True:
         opcao2 = input("Escolha: ")
 
         if opcao2 == "1":
+            os.system("cls")
             criar_piloto()
-
-        if opcao2 == "2":
+            
+        elif opcao2 == "2":
+            os.system("cls")
             listarPontosPilotos()
             
     elif opcao1 == "0":
