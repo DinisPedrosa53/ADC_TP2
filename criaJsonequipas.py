@@ -12,6 +12,7 @@ def obter_dados():
     dados["membros_total"] = input("Digite o número total de membros da equipa: ")
     dados["patrocinadores"] = input("Digite os principais patrocinadores (separados por vírgula): ")
     dados["vitorias"] = input("Digite o número total de vitórias: ")
+    dados["corridas"] = input("Digite o número total de corridas participadas: ")
     
     return dados
 
