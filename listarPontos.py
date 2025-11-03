@@ -1,7 +1,7 @@
 import json
 import os
 
-def printPontos(ficheiro="equipas.json"):
+def listarPontos(ficheiro="equipas.json"):
         if os.path.exists(ficheiro):
         # Se o ficheiro existe, abre e carrega os dados existentes
             with open(ficheiro, "r", encoding="utf-8") as file:
