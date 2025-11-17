@@ -3,9 +3,11 @@ import os
 import json
 from funcoes.criaJsonequipas import criar_equipa
 from funcoes.criaJsonpiloto import criar_piloto
+from funcoes.criaJsonmembroequipa import criar_membro_equipa
 from funcoes.listarPontos import *
 from funcoes.listarJsonequipas import listagem_equipas
 from funcoes.listarJsonpilotos import listagem_pilotos
+from funcoes.listarJsonmembroequipa import listagem_membro_equipas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
 
@@ -18,7 +20,7 @@ while True:
     print("2-Equipas")
     print("3-Pilotos")
     print("4-Chefes")
-    print("5-")
+    print("5-Membros de Equipas")
     print("0- Sair")
     opcao1 = input("Escolha: ")
 
@@ -103,7 +105,27 @@ while True:
             os.system("cls")
             
             input("Enter para continuar...")
+
+    elif opcao1 == "5":
+        os.system("cls")
+        print("Menu -> Membros de Equipa")
+        print("Opções")
+        print("1- Criar")
+        print("2- Listar")
+        print("3- Editar")
+        print("4- Apagar")
+        opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            criar_membro_equipa()
             
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_membro_equipas()
+            input("Enter para continuar...")
+
+
             
     elif opcao1 == "0":
             print("Saindo...")
