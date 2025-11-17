@@ -1,11 +1,11 @@
 # Ficheiro main do projeto
 import os
 import json
-from Funções.criaJsonequipas import criar_equipa
-from Funções.criaJsonpiloto import criar_piloto
-from Funções.listarPontos import *
-from Funções.listarJsonequipas import listagem_equipas
-from Funções.listarJsonpilotos import listagem_pilotos
+from funcoes.criaJsonequipas import criar_equipa
+from funcoes.criaJsonpiloto import criar_piloto
+from funcoes.listarPontos import *
+from funcoes.listarJsonequipas import listagem_equipas
+from funcoes.listarJsonpilotos import listagem_pilotos
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
@@ -43,6 +43,8 @@ while True:
         print("Opções")
         print("1- Criar")
         print("2- Listar")
+        print("3- Editar")
+        print("4- Apagar")
         opcao2 = input("Escolha: ")  
 
         if opcao2 == "1":
@@ -61,6 +63,8 @@ while True:
         print("Opções")
         print("1- Criar")
         print("2- Listar")
+        print("3- Editar")
+        print("4- Apagar")
         opcao2 = input("Escolha: ")
 
         if opcao2 == "1":
@@ -70,6 +74,25 @@ while True:
         elif opcao2 == "2":
             os.system("cls")
             listagem_pilotos()
+            input("Enter para continuar...")
+
+    elif opcao1 == "4":
+        os.system("cls")
+        print("Menu -> Chefes")
+        print("Opções")
+        print("1- Criar")
+        print("2- Listar")
+        print("3- Editar")
+        print("4- Apagar")
+        opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            
             input("Enter para continuar...")
             
             
