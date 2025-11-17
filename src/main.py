@@ -7,6 +7,7 @@ from funcoes.listarPontos import *
 from funcoes.listarJsonequipas import listagem_equipas
 from funcoes.listarJsonpilotos import listagem_pilotos
 from funcoes.listarJsonmembroequipa import listagem_membro_equipas
+from funcoes.editarEquipa import editar_equipa
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
@@ -54,6 +55,11 @@ while True:
         elif opcao2 == "2":
             os.system("cls")
             listagem_equipas()
+            print("")
+            input("Enter para continuar...")
+        elif opcao2 == "3":
+            os.system("cls")
+            editar_equipa()
             print("")
             input("Enter para continuar...")
             
