@@ -44,9 +44,7 @@ def adicionar_corrida_ao_ficheiro(nova_corrida, ficheiro="corridas.json"):
 
 
 # Função principal para adicionar uma corrida
-def main():
+def criar_corrida():
     nova_corrida = obter_dados()
     adicionar_corrida_ao_ficheiro(nova_corrida)
 
-# Chamada principal
-main()
