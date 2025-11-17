@@ -1,31 +1,61 @@
 import json
 import os
 
-# Função para listar as equipas do ficheiro JSON
-def listar_pilotos(ficheiro="pilotos.json"):
+# --------------------------
+# Lê o ficheiro JSON
+# --------------------------
+def carregar_pilotos(ficheiro="pilotos.json"):
     try:
-        # Construir caminho para o ficheiro na pasta "Json"
-        caminho_ficheiro = os.path.join("src/jsons", ficheiro)
-
-        # Abrir o ficheiro JSON e carregar os dados
-        with open(caminho_ficheiro, "r", encoding="utf-8") as file:
-            equipas = json.load(file)
-
-        # Verificando se há equipas no ficheiro
-        if equipas:
-            print(f"{'Nome':<20} {'Idade':<15} {'Peso':<15} {'Equipa':<15} {'Vitorias':<15} {'Pontos':<15}")
-            print("="*95)
-
-            # Listando as equipas
-            for equipa in equipas:
-                print(f"{equipa['nome']:<20} {equipa['idade']:<15} {equipa['peso']:<15} {equipa['equipa_atual']:<15} {equipa['vitorias']:<15} {equipa['pontosPiloto']:<15}")
-        else:
-            print("Nenhum piloto encontrado no ficheiro.")
+        caminho = os.path.join("src/jsons", ficheiro)
+        with open(caminho, "r", encoding="utf-8") as file:
+            return json.load(file)
     except FileNotFoundError:
-        print("O ficheiro 'pilotos.json' não foi encontrado na pasta 'Json'.")
+        print("Erro: ficheiro 'pilotos.json' não encontrado.")
+        return []
     except json.JSONDecodeError:
-        print("Erro ao ler o ficheiro JSON. Ele pode estar corrompido ou mal formatado.")
+        print("Erro: ficheiro JSON mal formatado.")
+        return []
 
+# --------------------------
+# Tabela formatada
+# --------------------------
+def imprimir_tabela(pilotos):
+    print(f"{'Nome':<20} {'Idade':<10} {'Peso':<10} {'Equipa':<15} {'Vitórias':<10} {'Pontos':<10}")
+    print("=" * 85)
+    for p in pilotos:
+        print(f"{p['nome']:<20} {p['idade']:<10} {p['peso']:<10} {p['equipa_atual']:<15} {p['vitorias']:<10} {p['pontosPiloto']:<10}")
+
+
+# ------------------------------------
+# Pilotos COM equipa
+# ------------------------------------
+def listar_pilotos_com_equipa():
+    pilotos = carregar_pilotos()
+    com_equipa = [p for p in pilotos if p["equipa_atual"] not in ("", None, "-", "sem equipa")]
+    
+    if com_equipa:
+        print("\n--- PILOTOS COM EQUIPA ---")
+        imprimir_tabela(com_equipa)
+    else:
+        print("Nenhum piloto com equipa.")
+
+# ------------------------------------
+# Pilotos SEM equipa
+# ------------------------------------
+def listar_pilotos_sem_equipa():
+    pilotos = carregar_pilotos()
+    sem_equipa = [p for p in pilotos if p["equipa_atual"] in ("", None, "-", "sem equipa")]
+
+    if sem_equipa:
+        print("\n--- PILOTOS SEM EQUIPA ---")
+        imprimir_tabela(sem_equipa)
+    else:
+        print("Nenhum piloto sem equipa.")
+
+
+# --------------------------
 # Função principal
+# --------------------------
 def listagem_pilotos():
-    listar_pilotos()
+    listar_pilotos_com_equipa()
+    listar_pilotos_sem_equipa()
