@@ -11,5 +11,44 @@
         "vitorias": "248",
         "corridas": "1120",
         "pontosEquipa": "362"
+    },
+    {
+        "nome": "a",
+        "piloto1": "1",
+        "piloto2": "a",
+        "pontosEquipa": 12,
+        "presidente": "A",
+        "fundador": "abibi",
+        "mecanicos": "12",
+        "membros_total": "12",
+        "patrocinadores": "12",
+        "vitorias": "12",
+        "corridas": "12"
+    },
+    {
+        "nome": "1",
+        "piloto1": "1",
+        "piloto2": "a",
+        "pontosEquipa": 12,
+        "presidente": "& C:/Users/admin/AppData/Local/Python/pythoncore-3.14-64/python.exe c:/Users/admin/Desktop/ADC-TP2/ADC_TP2/src/main.py",
+        "fundador": "",
+        "mecanicos": "",
+        "membros_total": "",
+        "patrocinadores": "",
+        "vitorias": "",
+        "corridas": ""
+    },
+    {
+        "nome": "a",
+        "piloto1": "1",
+        "piloto2": "B",
+        "pontosEquipa": 32,
+        "presidente": "1",
+        "fundador": "1",
+        "mecanicos": "1",
+        "membros_total": "1",
+        "patrocinadores": "1",
+        "vitorias": "1",
+        "corridas": "1"
     }
 ]
