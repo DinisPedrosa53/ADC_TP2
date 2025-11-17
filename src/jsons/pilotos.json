@@ -1,3 +1,15 @@
 [
-    
+    {
+        "nome": "B",
+        "idade": "A",
+        "altura": "A",
+        "peso": "A",
+        "equipas": "A",
+        "telefone": "A",
+        "morada": "A",
+        "equipa_atual": "A",
+        "pontosPiloto": "A",
+        "vitorias": "A",
+        "salario": "A"
+    }
 ]

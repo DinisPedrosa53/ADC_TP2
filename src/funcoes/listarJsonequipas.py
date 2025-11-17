@@ -5,7 +5,7 @@ import os
 def listar_equipas(ficheiro="equipas.json"):
     try:
         # Construir caminho para o ficheiro na pasta "Json"
-        caminho_ficheiro = os.path.join("jsons", ficheiro)
+        caminho_ficheiro = os.path.join("src/jsons", ficheiro)
 
         # Abrir o ficheiro JSON e carregar os dados
         with open(caminho_ficheiro, "r", encoding="utf-8") as file:
@@ -22,7 +22,7 @@ def listar_equipas(ficheiro="equipas.json"):
         else:
             print("Nenhuma equipa encontrada no ficheiro.")
     except FileNotFoundError:
-        print("O ficheiro 'equipas.json' não foi encontrado na pasta 'Json'.")
+        print("O ficheiro 'equipas.json' não foi encontrado na pasta 'jsons'.")
     except json.JSONDecodeError:
         print("Erro ao ler o ficheiro JSON. Ele pode estar corrompido ou mal formatado.")
 

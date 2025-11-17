@@ -3,7 +3,7 @@ import os
 
 # Caminho do ficheiro JSON dentro da pasta Json
 PASTA = "src/jsons"
-FICHEIRO = "equipas.json"
+FICHEIRO = "pilotos.json"
 CAMINHO_FICHEIRO = os.path.join(PASTA, FICHEIRO)
 
 
@@ -25,48 +25,47 @@ def guardar_dados(dados):
         json.dump(dados, file, ensure_ascii=False, indent=4)
 
 
-# Função para editar uma equipa
-def editar_equipa():
+# Função para editar um piloto
+def editar_piloto():
     dados = carregar_dados()
 
     if not dados:
-        print("Nenhuma equipa encontrada.")
+        print("Nenhum piloto encontrada.")
         return
 
-    print("\n=== Equipas Disponíveis ===")
-    for equipa in dados:
-        print(f"- {equipa['nome']}")
+    print("\n=== Pilotos Disponíveis ===")
+    for piloto in dados:
+        print(f"- {piloto['nome']}")
 
-    nome = input("\nDigite o nome da equipa que deseja editar: ")
+    nome = input("\nDigite o nome do piloto que deseja editar: ")
 
-    # Procurar equipa pelo nome
-    equipa_encontrada = None
-    for equipa in dados:
-        if equipa["nome"].lower() == nome.lower():
-            equipa_encontrada = equipa
+    # Procurar piloto pelo nome
+    piloto_encontrado = None
+    for piloto in dados:
+        if piloto["nome"].lower() == nome.lower():
+            piloto_encontrado = piloto
             break
 
-    if not equipa_encontrada:
-        print("Equipa não encontrada!")
+    if not piloto_encontrado:
+        print("Piloto não encontrado!")
         return
 
     print("\n=== Campos editáveis ===")
-    for chave in equipa_encontrada.keys():
+    for chave in piloto_encontrado.keys():
         print(f"- {chave}")
 
     campo = input("\nDigite o nome do campo que deseja editar: ")
 
-    if campo not in equipa_encontrada:
+    if campo not in piloto_encontrado:
         print("Campo inválido!")
         return
 
-    novo_valor = input(f"Novo valor para '{campo}' (atual: {equipa_encontrada[campo]}): ")
+    novo_valor = input(f"Novo valor para '{campo}' (atual: {piloto_encontrado[campo]}): ")
 
-    equipa_encontrada[campo] = novo_valor
+    piloto_encontrado[campo] = novo_valor
 
     guardar_dados(dados)
 
     print("\n Dados atualizados com sucesso!")
 
-
-# editar_equipa()
+#editar_piloto()

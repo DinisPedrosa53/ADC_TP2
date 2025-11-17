@@ -21,7 +21,7 @@ def obter_dados():
 def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
 
     # Caminho completo dentro da pasta Json
-    pasta = "jsons"
+    pasta = "src/jsons"
     caminho_ficheiro = os.path.join(pasta, ficheiro)
 
     # Criar pasta Json se não existir
