@@ -8,7 +8,20 @@
         "telefone": "A",
         "morada": "A",
         "equipa_atual": "A",
-        "pontosPiloto": "A",
+        "pontosPiloto": "20",
+        "vitorias": "A",
+        "salario": "A"
+    },
+    {
+        "nome": "C",
+        "idade": "A",
+        "altura": "A",
+        "peso": "A",
+        "equipas": "A",
+        "telefone": "A",
+        "morada": "A",
+        "equipa_atual": "A",
+        "pontosPiloto": "276",
         "vitorias": "A",
         "salario": "A"
     },
