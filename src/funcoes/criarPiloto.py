@@ -13,6 +13,7 @@ def obter_dados():
     dados["equipa_atual"] = input("Digite a equipa que o piloto se encontra atualmente: ")
     dados["pontosPiloto"] = input("Digite o número de pontos do piloto principal: ")
     dados["vitorias"] = input("Digite o número de vitórias do piloto: ")
+    dados["data_contrato"] = input("Digite a data que o piloto foi contratado: ")
     dados["salario"] = input("Digite o salário anual do piloto (em euros): ")
     
     return dados
