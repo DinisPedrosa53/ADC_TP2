@@ -47,5 +47,3 @@ def main():
     novo_chefe_equipa = obter_dados()
     adicionar_chefe_equipa_ao_ficheiro(novo_chefe_equipa)
 
-# Chamada principal
-main()
