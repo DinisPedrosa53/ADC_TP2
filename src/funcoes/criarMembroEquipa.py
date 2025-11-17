@@ -17,7 +17,7 @@ def obter_dados():
 def adicionar_membro_equipa_ao_ficheiro(novo_membro_equipa, ficheiro="membro_equipas.json"):
 
     # Caminho completo dentro da pasta Json
-    pasta = "jsons"
+    pasta = "src/jsons"
     caminho_ficheiro = os.path.join(pasta, ficheiro)
 
     # Criar pasta Json se não existir
