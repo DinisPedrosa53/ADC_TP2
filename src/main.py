@@ -1,15 +1,15 @@
 # Ficheiro main do projeto
 import os
 import json
-from funcoes.criaJsonequipas import criar_equipa
-from funcoes.criaJsonpiloto import criar_piloto
-from funcoes.criaJsonmembroequipa import criar_membro_equipa
-from funcoes.listarPontos import *
-from funcoes.listarJsonequipas import listagem_equipas
-from funcoes.listarJsonpilotos import listagem_pilotos
-from funcoes.listarJsonmembroequipa import listagem_membro_equipas
-from funcoes.editarEquipa import editar_equipa
-from funcoes.editarPiloto import editar_piloto
+from src.funcoes.criarEquipas import criar_equipa
+from src.funcoes.criarPiloto import criar_piloto
+from src.funcoes.criarMembroEquipa import criar_membro_equipa
+from src.funcoes.listarPontos import *
+from src.funcoes.listarEquipas import listagem_equipas
+from src.funcoes.listarPilotos import listagem_pilotos
+from src.funcoes.listarMembroEquipa import listagem_membro_equipas
+from src.funcoes.editarEquipa import editar_equipa
+from src.funcoes.editarPiloto import editar_piloto
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
@@ -99,7 +99,6 @@ while True:
 
         if opcao2 == "1":
             os.system("cls")
-            
             
         elif opcao2 == "2":
             os.system("cls")
