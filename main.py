@@ -1,10 +1,10 @@
 # Ficheiro main do projeto
 import os
 import json
-from criaJsonequipas import criar_equipa
-from criaJsonpiloto import criar_piloto
-from listarPontos import *
-from listarJsonequipas import listagem_equipas
+from Funções.criaJsonequipas import criar_equipa
+from Funções.criaJsonpiloto import criar_piloto
+from Funções.listarPontos import *
+from Funções.listarJsonequipas import listagem_equipas
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
