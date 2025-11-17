@@ -1,10 +1,10 @@
 import json 
 import os
 
-filename = "user_data.json"
+filename = "src/jsons/user_data.json"
 
 def lobby(name):
-    print(f"Entering lobby for {name}...")
+    print(f"")
 
 if os.path.exists(filename):
     with open(filename, "r") as file:
@@ -16,15 +16,15 @@ else:
     data = []
 
 while True:
-    name = input("Enter your name: ")
-    user = next((user for user in data if user["name"].lower() == name.lower()), None)
+    name = input("Escreve o teu nome: ")
+    user = next((user for user in data if user["nome"].lower() == name.lower()), None)
     if user:
-        password = input("Enter your password: ")
+        password = input("Escreve a tua password: ")
         if password == user.get("password"):
-            print(f"✅ Welcome back, '{name}'!")
+            print(f"✅ Benvindo de volta, '{name}'!")
             lobby(name)
             break
         else:
-            print("❌ Incorrect password. Please try again.")
+            print("❌ Password incorreta, por favor tente outra vez.")
     else:
-        print(f"⚠️ The name '{name}' does not exist. Please enter a different name.")
+        print(f"⚠️ O nome '{name}' nao existe. Por favor tente um nome diferente.")
