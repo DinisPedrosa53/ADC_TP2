@@ -11,16 +11,19 @@ from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
 
+#   Parte para fazer login antes de ter acesso ao menu
+#   para que depois seja possível tratar de como as permissões vão funcionar
+#
 # Menu básico com loop para manipular dados nos ficheiros JSON
 while True:
     os.system("cls")
     print("Menu")
     print("Opções")
-    print("1-Utilizadores")
-    print("2-Equipas")
-    print("3-Pilotos")
-    print("4-Chefes")
-    print("5-Membros de Equipas")
+    print("1- Utilizadores")
+    print("2- Equipas")
+    print("3- Pilotos")
+    print("4- Chefes")
+    print("5- Membros de Equipas")
     print("0- Sair")
     opcao1 = input("Escolha: ")
 
