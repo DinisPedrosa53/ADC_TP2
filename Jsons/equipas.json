@@ -1,0 +1,15 @@
+[
+    {
+        "nome": "Ferrari",
+        "piloto1": "Max Verstappen",
+        "piloto2": "Charles Leclerc",
+        "presidente": "John Elkann",
+        "fundador": "Enzo Ferrari",
+        "mecanicos": "300",
+        "membros_total": "700",
+        "patrocinadores": "HP,IBM,UniCredit",
+        "vitorias": "248",
+        "corridas": "1120",
+        "pontosEquipa": "362"
+    }
+]

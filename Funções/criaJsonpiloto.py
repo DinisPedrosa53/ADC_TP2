@@ -19,10 +19,19 @@ def obter_dados():
 
 # Função para adicionar um novo piloto ao ficheiro JSON
 def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
+
+    # Caminho completo dentro da pasta Json
+    pasta = "Jsons"
+    caminho_ficheiro = os.path.join(pasta, ficheiro)
+
+    # Criar pasta Json se não existir
+    if not os.path.exists(pasta):
+        os.makedirs(pasta)
+
     # Verifica se o ficheiro já existe
-    if os.path.exists(ficheiro):
+    if os.path.exists(caminho_ficheiro):
         # Se o ficheiro existe, abre e carrega os dados existentes
-        with open(ficheiro, "r", encoding="utf-8") as file:
+        with open(caminho_ficheiro, "r", encoding="utf-8") as file:
             dados = json.load(file)
     else:
         # Se o ficheiro não existe, cria uma lista vazia
@@ -32,7 +41,7 @@ def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
     dados.append(novo_piloto)
 
     # Salva os dados (incluindo o novo piloto) no ficheiro JSON
-    with open(ficheiro, "w", encoding="utf-8") as file:
+    with open(caminho_ficheiro, "w", encoding="utf-8") as file:
         json.dump(dados, file, ensure_ascii=False, indent=4)
 
     print("Novo piloto adicionado com sucesso!")

@@ -19,20 +19,27 @@ def obter_dados():
 
 # Função para adicionar uma nova equipa ao ficheiro JSON
 def adicionar_equipa_ao_ficheiro(nova_equipa, ficheiro="equipas.json"):
-    # Verifica se o ficheiro já existe
-    if os.path.exists(ficheiro):
-        # Se o ficheiro existe, abre e carrega os dados existentes
-        with open(ficheiro, "r", encoding="utf-8") as file:
+
+    # Caminho completo dentro da pasta Json
+    pasta = "Jsons"
+    caminho_ficheiro = os.path.join(pasta, ficheiro)
+
+    # Criar pasta Json se não existir
+    if not os.path.exists(pasta):
+        os.makedirs(pasta)
+
+    # Verifica se o ficheiro já existe dentro da pasta Json
+    if os.path.exists(caminho_ficheiro):
+        with open(caminho_ficheiro, "r", encoding="utf-8") as file:
             dados = json.load(file)
     else:
-        # Se o ficheiro não existe, cria uma lista vazia
         dados = []
 
     # Adiciona a nova equipa à lista de equipas
     dados.append(nova_equipa)
 
     # Salva os dados (incluindo a nova equipa) no ficheiro JSON
-    with open(ficheiro, "w", encoding="utf-8") as file:
+    with open(caminho_ficheiro, "w", encoding="utf-8") as file:
         json.dump(dados, file, ensure_ascii=False, indent=4)
 
     print("Nova equipa adicionada com sucesso!")
