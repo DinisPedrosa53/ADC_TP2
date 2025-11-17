@@ -1,10 +1,11 @@
 import json
 import os
 
-def listarPontosEquipas(equipas="equipas.json"):
-        if os.path.exists(equipas):
+def listarPontosEquipas(equipas="equipas.json"):  
+        caminho_ficheiro = os.path.join("jsons", equipas)
+        if os.path.exists(caminho_ficheiro):
         # Se o ficheiro existe, abre e carrega os dados existentes
-            with open(equipas, "r", encoding="utf-8") as file:
+            with open(caminho_ficheiro, "r", encoding="utf-8") as file:
                 dadosEquipas = json.load(file)
             return dadosEquipas
         else:
@@ -18,9 +19,10 @@ def listarPontosEquipas(equipas="equipas.json"):
 
 
 def listarPontosPilotos(pilotos="pilotos.json"):
-        if os.path.exists(pilotos):
+        caminho_ficheiro = os.path.join("jsons", pilotos)
+        if os.path.exists(caminho_ficheiro):
         # Se o ficheiro existe, abre e carrega os dados existentes
-            with open(pilotos, "r", encoding="utf-8") as file:
+            with open(caminho_ficheiro, "r", encoding="utf-8") as file:
                 dadosPilotos = json.load(file)
             return dadosPilotos
         else:

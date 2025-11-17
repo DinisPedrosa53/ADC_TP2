@@ -103,5 +103,6 @@ while True:
             
             
     elif opcao1 == "0":
+            os.system("cls")
             print("Saindo... Até logo!")
             break  # Sai do loop e termina o programa
