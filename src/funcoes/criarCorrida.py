@@ -10,6 +10,7 @@ def obter_dados():
     dados["pais"] = input("Digite o país que ocorrerá a corrida: ")
     dados["horario"] = input("Digite o hórario que a corrida começará: ")
     dados["tempo"] = input("Digite o tempo que esteve/estará durante a corrida(previsão): ")
+    dados["bilhete"] = input("Digite o preço do bilhete: ")
     dados["podio"] = input("Digite os pilotos que ficaram em 1º, 2º e 3º (por ordem e separados por vírgulas): ")
 
     
