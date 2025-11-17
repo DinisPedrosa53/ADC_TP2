@@ -24,5 +24,19 @@
         "pontosPiloto": "276",
         "vitorias": "A",
         "salario": "A"
+    },
+    {
+        "nome": "1",
+        "idade": "1",
+        "altura": "1",
+        "peso": "1",
+        "equipas": "",
+        "telefone": "1",
+        "morada": "1",
+        "equipa_atual": "",
+        "pontosPiloto": "12",
+        "vitorias": "12",
+        "data_contrato": "21",
+        "salario": "12"
     }
 ]
