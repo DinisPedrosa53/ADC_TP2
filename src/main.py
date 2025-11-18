@@ -6,14 +6,18 @@ from funcoes.criarPiloto import criar_piloto
 from funcoes.criarCorrida import criar_corrida
 from funcoes.criarCarro import criar_carro
 from funcoes.criarMembroEquipa import criar_membro_equipa
+from funcoes.criarPista import criar_pista
 from funcoes.listarPontos import *
 from funcoes.listarEquipas import listagem_equipas
 from funcoes.listarCarros import listagem_carros
 from funcoes.listarPilotos import listagem_pilotos
 from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.listarCorridas import listagem_corridas
+from funcoes.listarPistas import listagem_pistas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
+from funcoes.apagarEquipas import apagar_equipa
+from funcoes.apagarPilotos import apagar_piloto
 
 #   Parte para fazer login antes de ter acesso ao menu
 #   para que depois seja possível tratar de como as permissões vão funcionar
@@ -29,7 +33,8 @@ while True:
     print("4- Chefes")
     print("5- Membros de Equipas")
     print("6- Corridas")
-    print("7- Carros")
+    print("7- Pistas")
+    print("8- Carros")
     print("0- Sair")
     opcao1 = input("Escolha: ")
 
@@ -72,6 +77,10 @@ while True:
             os.system("cls")
             editar_equipa()
             input("Enter para continuar...")
+        elif opcao2 == "4":
+            os.system("cls")
+            apagar_equipa()
+            input("Enter para continuar...")
             
 
     elif opcao1 == "3":
@@ -94,6 +103,10 @@ while True:
         elif opcao2 == "3":
             os.system("cls")
             editar_piloto()
+            input("Enter para continuar...")
+        elif opcao2 == "4":
+            os.system("cls")
+            apagar_piloto()
             input("Enter para continuar...")
 
     elif opcao1 == "4":
@@ -154,6 +167,30 @@ while True:
 
     elif opcao1 == "7":
         os.system("cls")
+
+        print("Menu -> Pistas")
+        print("Opções")
+        print("1- Criar")
+        print("2- Listar")
+        print("3- Editar")
+        print("4- Apagar")
+        opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            criar_pista()
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_pistas()
+            criar_pista()
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_pistas()
+            input("Enter para continuar...")
+    elif opcao1 == "8":
+        os.system("cls")
         print("Menu -> Carros")
         print("Opções")
         print("1- Criar")
@@ -172,5 +209,6 @@ while True:
             input("Enter para continuar...")
             
     elif opcao1 == "0":
+            os.system("cls")
             print("Saindo...")
             break  # Sai do loop e termina o programa
