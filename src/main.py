@@ -5,11 +5,13 @@ from funcoes.criarEquipas import criar_equipa
 from funcoes.criarPiloto import criar_piloto
 from funcoes.criarCorrida import criar_corrida
 from funcoes.criarMembroEquipa import criar_membro_equipa
+from funcoes.criarPista import criar_pista
 from funcoes.listarPontos import *
 from funcoes.listarEquipas import listagem_equipas
 from funcoes.listarPilotos import listagem_pilotos
 from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.listarCorridas import listagem_corridas
+from funcoes.listarPistas import listagem_pistas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
 from funcoes.apagarEquipas import apagar_equipa
@@ -29,6 +31,7 @@ while True:
     print("4- Chefes")
     print("5- Membros de Equipas")
     print("6- Corridas")
+    print("7- Pistas")
     print("0- Sair")
     opcao1 = input("Escolha: ")
 
@@ -158,7 +161,25 @@ while True:
             os.system("cls")
             listagem_corridas()
             input("Enter para continuar...")
+
+    elif opcao1 == "7":
+        os.system("cls")
+        print("Menu -> Pistas")
+        print("Opções")
+        print("1- Criar")
+        print("2- Listar")
+        opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            criar_pista()
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_pistas()
+            input("Enter para continuar...")
             
     elif opcao1 == "0":
+            os.system("cls")
             print("Saindo...")
             break  # Sai do loop e termina o programa
