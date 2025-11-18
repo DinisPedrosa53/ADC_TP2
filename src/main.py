@@ -12,6 +12,8 @@ from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.listarCorridas import listagem_corridas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
+from funcoes.criarPista import criar_pista
+from funcoes.listarPistas import listagem_pistas
 
 #   Parte para fazer login antes de ter acesso ao menu
 #   para que depois seja possível tratar de como as permissões vão funcionar
@@ -27,6 +29,7 @@ while True:
     print("4- Chefes")
     print("5- Membros de Equipas")
     print("6- Corridas")
+    print("7- Pistas")
     print("0- Sair")
     opcao1 = input("Escolha: ")
 
@@ -148,7 +151,25 @@ while True:
             os.system("cls")
             listagem_corridas()
             input("Enter para continuar...")
+
+    elif opcao1 == "7":
+        os.system("cls")
+        print("Menu -> Pistas")
+        print("Opções")
+        print("1- Criar")
+        print("2- Listar")
+        opcao2 = input("Escolha: ")
+
+        if opcao2 == "1":
+            os.system("cls")
+            criar_pista()
+            
+        elif opcao2 == "2":
+            os.system("cls")
+            listagem_pistas()
+            input("Enter para continuar...")
             
     elif opcao1 == "0":
+            os.system("cls")
             print("Saindo...")
             break  # Sai do loop e termina o programa
