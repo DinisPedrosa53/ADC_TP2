@@ -9,6 +9,7 @@ def obter_dados():
     dados["telefone"] = input("Digite o número de telefone do membro de equipa: ")
     dados["morada"] = input("Digite a morada do membro de equipa: ")
     dados["equipa_atual"] = input("Digite a equipa que o membro de equipa se encontra atualmente: ")
+    dados["tipo"] = input("Digite o tipo de membro de equipa: ")
     dados["salario"] = input("Digite o salário anual do membro de equipa (em euros): ")
     
     return dados

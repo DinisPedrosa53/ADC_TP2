@@ -6,41 +6,30 @@ from funcoes.user_creator import user_creator
 from funcoes.criarEquipas import criar_equipa
 from funcoes.criarPiloto import criar_piloto
 from funcoes.criarCorrida import criar_corrida
+from funcoes.criarCarro import criar_carro
 from funcoes.criarMembroEquipa import criar_membro_equipa
+from funcoes.criarPista import criar_pista
 from funcoes.listarPontos import *
 from funcoes.listarEquipas import listagem_equipas
+from funcoes.listarCarros import listagem_carros
 from funcoes.listarPilotos import listagem_pilotos
 from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.listarCorridas import listagem_corridas
+from funcoes.listarPistas import listagem_pistas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
+from funcoes.apagarEquipas import apagar_equipa
+from funcoes.apagarPilotos import apagar_piloto
 
 
 inform = None
-while True:
 
-    escolha = input("1 - criar utilizador\n2 - login\nEscolha: ")
-    if escolha == "1":
-        user_creator()
-    elif escolha == "2":
-        inform = login()
-        break
-name = inform[0]
-permissao = inform[1]
-
-if permissao == "admin":
-    menu_admin(permissao)
-elif permissao == "chefe de corrida":
-    menu_admin(permissao)
-elif permissao == "FIA":
-    menu_admin(permissao)
-elif permissao == "utilizador":
-    menu_admin(permissao)
+    
 
 #   para que depois seja possível tratar de como as permissões vão funcionar
 #
 # Menu básico com loop para manipular dados nos ficheiros JSON
-def menu_admin(permissao):
+def main(permissao):
     while True:
         os.system("cls")
         print("Menu")
@@ -51,6 +40,8 @@ def menu_admin(permissao):
         print("4- Chefes")
         print("5- Membros de Equipas")
         print("6- Corridas")
+        print("7- Pistas")
+        print("8- Carros")
         print("0- Sair")
         opcao1 = input("Escolha: ")
 
@@ -63,7 +54,7 @@ def menu_admin(permissao):
             opcao2 = input("Escolha: ")
             if opcao2 == "1":
                 os.system("cls")
-                user_creator()
+                # Chamar função para criar utilizador
                 pass  # Placeholder for user creation function
 
             elif opcao2 == "2":
@@ -71,7 +62,7 @@ def menu_admin(permissao):
                 # Chamar função para listar utilizadores
                 pass  # Placeholder for user listing function
             
-        elif opcao1 == "2" :
+        elif opcao1 == "2":
             os.system("cls")
             print("Menu -> Equipas")
             print("Opções")
@@ -93,6 +84,10 @@ def menu_admin(permissao):
                 os.system("cls")
                 editar_equipa()
                 input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
+                os.system("cls")
+                apagar_equipa()
+                input("Enter para continuar...")
                 
 
         elif opcao1 == "3":
@@ -105,7 +100,7 @@ def menu_admin(permissao):
             print("4- Apagar")
             opcao2 = input("Escolha: ")
 
-            if opcao2 == "1" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
+            if opcao2 == "1" and (permissao == "admin" or permissao == "chefe de corrida"):
                 os.system("cls")
                 criar_piloto()           
             elif opcao2 == "2":
@@ -115,6 +110,10 @@ def menu_admin(permissao):
             elif opcao2 == "3" and (permissao == "admin" or permissao == "chefe de corrida"):
                 os.system("cls")
                 editar_piloto()
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida"):
+                os.system("cls")
+                apagar_piloto()
                 input("Enter para continuar...")
 
         elif opcao1 == "4":
@@ -127,7 +126,7 @@ def menu_admin(permissao):
             print("4- Apagar")
             opcao2 = input("Escolha: ")
 
-            if opcao2 == "1":
+            if opcao2 == "1" and (permissao == "admin"):
                 os.system("cls")
                 
             elif opcao2 == "2":
@@ -145,7 +144,7 @@ def menu_admin(permissao):
             print("4- Apagar")
             opcao2 = input("Escolha: ")
 
-            if opcao2 == "1":
+            if opcao2 == "1"  and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
                 os.system("cls")
                 criar_membro_equipa()
                 
@@ -164,7 +163,7 @@ def menu_admin(permissao):
             print("4- Apagar")
             opcao2 = input("Escolha: ")
 
-            if opcao2 == "1":
+            if opcao2 == "1"  and (permissao == "admin" or permissao == "FIA"):
                 os.system("cls")
                 criar_corrida()
                 
@@ -172,7 +171,72 @@ def menu_admin(permissao):
                 os.system("cls")
                 listagem_corridas()
                 input("Enter para continuar...")
-                                        
+
+        elif opcao1 == "7":
+            os.system("cls")
+
+            print("Menu -> Pistas")
+            print("Opções")
+            print("1- Criar")
+            print("2- Listar")
+            print("3- Editar")
+            print("4- Apagar")
+            opcao2 = input("Escolha: ")
+
+            if opcao2 == "1"  and (permissao == "admin" or permissao == "FIA"):
+                os.system("cls")
+                criar_pista()
+
+            elif opcao2 == "2":
+                os.system("cls")
+                listagem_pistas()
+                input("Enter para continuar...")
+
+        elif opcao1 == "8":
+            os.system("cls")
+            print("Menu -> Carros")
+            print("Opções")
+            print("1- Criar")
+            print("2- Listar")
+            print("3- Editar")
+            print("4- Apagar")
+            opcao2 = input("Escolha: ")
+
+            if opcao2 == "1"  and (permissao == "admin" or permissao == "chefe de corrida"):
+                os.system("cls")
+                criar_carro()
+                
+            elif opcao2 == "2":
+                os.system("cls")
+                listagem_carros()
+                input("Enter para continuar...")
+                
         elif opcao1 == "0":
+                os.system("cls")
                 print("Saindo...")
                 break  # Sai do loop e termina o programa
+
+
+
+while True:
+
+    escolha = input("1 - criar utilizador\n2 - login\nEscolha: ")
+    if escolha == "1":
+        user_creator()
+    elif escolha == "2":
+        inform = login()
+        break
+name = inform[0]
+permissao = inform[1]
+
+if permissao == "admin":
+    main(permissao)
+elif permissao == "chefe de corrida":
+    main(permissao)
+elif permissao == "FIA":
+    main(permissao)
+elif permissao == "utilizador":
+    main(permissao)
+        
+if __name__ == "__main__":
+    main()

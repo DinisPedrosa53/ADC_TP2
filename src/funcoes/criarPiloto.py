@@ -14,6 +14,7 @@ def obter_dados():
     dados["pontosPiloto"] = input("Digite o número de pontos do piloto principal: ")
     dados["vitorias"] = input("Digite o número de vitórias do piloto: ")
     dados["data_contrato"] = input("Digite a data que o piloto foi contratado: ")
+    dados["ativo"] = input("Digite se o piloto está ativo para competir (1 = sim, 0 = não): ")
     dados["salario"] = input("Digite o salário anual do piloto (em euros): ")
     
     return dados
@@ -31,17 +32,11 @@ def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
 
     # Verifica se o ficheiro já existe
     if os.path.exists(caminho_ficheiro):
-        try:
-            with open(caminho_ficheiro, "r", encoding="utf-8") as file:
-                dados = json.load(file)
-
-            # Se o ficheiro não for uma lista, corrige
-            if not isinstance(dados, list):
-                dados = []
-
-        except json.JSONDecodeError:
-            dados = []
+        # Se o ficheiro existe, abre e carrega os dados existentes
+        with open(caminho_ficheiro, "r", encoding="utf-8") as file:
+            dados = json.load(file)
     else:
+        # Se o ficheiro não existe, cria uma lista vazia
         dados = []
 
     # Adiciona um piloto à lista de pilotos

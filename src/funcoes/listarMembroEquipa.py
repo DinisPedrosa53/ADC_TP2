@@ -13,12 +13,12 @@ def listar_membro_equipas(ficheiro="membro_equipas.json"):
 
         # Verificando se há equipas no ficheiro
         if equipas:
-            print(f"{'Nome':<20} {'Idade':<15}  {'salario':<15} {'equipa Atual':<15} {'equipas':<15}")
+            print(f"{'Nome':<20} {'Idade':<15}  {'salario':<15} {'equipa Atual':<15} {'equipas':<15} {'tipo':<15}")
             print("="*95)
 
             # Listando as equipas
             for equipa in equipas:
-                print(f"{equipa['nome']:<20} {equipa['idade']:<15} {equipa['salario']:<15}  {equipa['equipa_atual']:<15}  {equipa['equipas']:<15} ")
+                print(f"{equipa['nome']:<20} {equipa['idade']:<15} {equipa['salario']:<15}  {equipa['equipa_atual']:<15}  {equipa['equipas']:<15} {equipa['tipo']:<15} ")
         else:
             print("Nenhum membro_equipa encontrado no ficheiro.")
     except FileNotFoundError:
