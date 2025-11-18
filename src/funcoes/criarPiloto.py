@@ -31,11 +31,17 @@ def adicionar_piloto_ao_ficheiro(novo_piloto, ficheiro="pilotos.json"):
 
     # Verifica se o ficheiro já existe
     if os.path.exists(caminho_ficheiro):
-        # Se o ficheiro existe, abre e carrega os dados existentes
-        with open(caminho_ficheiro, "r", encoding="utf-8") as file:
-            dados = json.load(file)
+        try:
+            with open(caminho_ficheiro, "r", encoding="utf-8") as file:
+                dados = json.load(file)
+
+            # Se o ficheiro não for uma lista, corrige
+            if not isinstance(dados, list):
+                dados = []
+
+        except json.JSONDecodeError:
+            dados = []
     else:
-        # Se o ficheiro não existe, cria uma lista vazia
         dados = []
 
     # Adiciona um piloto à lista de pilotos

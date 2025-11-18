@@ -148,7 +148,7 @@ while True:
             os.system("cls")
             listagem_corridas()
             input("Enter para continuar...")
-            
+                                     
     elif opcao1 == "0":
             print("Saindo...")
             break  # Sai do loop e termina o programa
