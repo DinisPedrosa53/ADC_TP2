@@ -1,14 +1,27 @@
 [
     {
-        "name": "Rafa",
-        "age": 19,
+        "nome": "Rafa",
+        "idade": 19,
         "email": "rafa.hp2006@gmail.com",
         "password": "Rafa2006"
     },
     {
-        "name": "Escama",
-        "age": 43,
+        "nome": "Escama",
+        "idade": 43,
         "email": "escama@escama.pt",
         "password": "escama"
+    },
+    {
+        "nome": "Rafa2",
+        "idade": 19,
+        "email": "hygtfredws",
+        "password": "123"
+    },
+    {
+        "nome": "trew",
+        "idade": 12,
+        "email": "juhytre",
+        "password": "123",
+        "permissao": "chefe de corrida"
     }
 ]
