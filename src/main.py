@@ -12,6 +12,8 @@ from funcoes.listarMembroEquipa import listagem_membro_equipas
 from funcoes.listarCorridas import listagem_corridas
 from funcoes.editarEquipa import editar_equipa
 from funcoes.editarPiloto import editar_piloto
+from funcoes.apagarEquipas import apagar_equipa
+from funcoes.apagarPilotos import apagar_piloto
 
 #   Parte para fazer login antes de ter acesso ao menu
 #   para que depois seja possível tratar de como as permissões vão funcionar
@@ -69,6 +71,10 @@ while True:
             os.system("cls")
             editar_equipa()
             input("Enter para continuar...")
+        elif opcao2 == "4":
+            os.system("cls")
+            apagar_equipa()
+            input("Enter para continuar...")
             
 
     elif opcao1 == "3":
@@ -91,6 +97,10 @@ while True:
         elif opcao2 == "3":
             os.system("cls")
             editar_piloto()
+            input("Enter para continuar...")
+        elif opcao2 == "4":
+            os.system("cls")
+            apagar_piloto()
             input("Enter para continuar...")
 
     elif opcao1 == "4":

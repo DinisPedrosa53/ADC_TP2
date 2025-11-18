@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 # --------------------------
 # Carregar pilotos do ficheiro
@@ -20,10 +21,10 @@ def carregar_pilotos(ficheiro="pilotos.json"):
 # Imprimir tabela de pilotos
 # --------------------------
 def imprimir_tabela(pilotos):
-    print(f"{'Nome':<20} {'Idade':<10} {'Peso':<10} {'Equipa':<15} {'Vitórias':<10} {'Pontos':<10}{'Ativo':<10}")
-    print("=" * 85)
+    print(f"{'Nome':<20} {'Idade':<5} {'Peso':<5} {'Equipa':<15} {'Vitórias':<10} {'Pontos':<10} {'Ativo':<10} {'Contratado':<10}")
+    print("=" * 95)
     for p in pilotos:
-        print(f"{p['nome']:<20} {p['idade']:<10} {p['peso']:<10} {p['equipa_atual']:<15} {p['vitorias']:<10} {p['pontosPiloto']:<10} {p['ativo']:<10}")
+        print(f"{p['nome']:<20} {p['idade']:<5} {p['peso']:<5} {p['equipa_atual']:<15} {p['vitorias']:<10} {p['pontosPiloto']:<10} {p['ativo']:<10} {p['data_contrato']:<10}")
 
 # --------------------------
 # Função de ordenação
@@ -33,6 +34,17 @@ def ordenar_pilotos(pilotos, criterio):
         pilotos.sort(key=lambda x: x["nome"].lower())
     elif criterio == "pontos":
         pilotos.sort(key=lambda x: int(x.get("pontosPiloto", 0)), reverse=True)
+    elif criterio == "contrato":
+        # Ordena por data; pilotos sem data vão para o final
+        def data_contrato(p):
+            data_str = p.get("data_contrato")
+            if data_str:
+                try:
+                    return datetime.strptime(data_str, "%d/%m/%Y")
+                except ValueError:
+                    return datetime.min
+            return datetime.min
+        pilotos.sort(key=data_contrato, reverse=True)
     return pilotos
 
 # --------------------------
@@ -68,12 +80,15 @@ def listar_pilotos_interativo():
     print("Como deseja ordenar os pilotos?")
     print("1 - Nome (alfabético)")
     print("2 - Pontos (decrescente)")
+    print("3 - Tempo de contrato (decrescente)")
     escolha = input("Escolha: ")
 
     if escolha == "1":
         ordenar_por = "nome"
     elif escolha == "2":
         ordenar_por = "pontos"
+    elif escolha == "3":
+        ordenar_por = "contrato"
     else:
         print("Opção inválida. Ordenando por nome por defeito.")
         ordenar_por = "nome"
