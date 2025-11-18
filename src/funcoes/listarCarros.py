@@ -20,10 +20,10 @@ def carregar_carros(ficheiro="carros.json"):
 # Imprimir tabela de carros
 # --------------------------
 def imprimir_tabela(carros):
-    print(f"{'Nome':<20}  {'Peso':<10} {'altura':<15} {'potencia':<10} {'preco':<10}{'Ativo':<10}")
+    print(f"{'Nome':<20} {'equipa':<10} {'Peso':<10} {'altura':<15} {'potencia':<10} {'preco':<10}{'Ativo':<10}")
     print("=" * 85)
     for p in carros:
-        print(f"{p['nome']:<20}  {p['peso']:<10} {p['altura']:<15} {p['potencia']:<10} {p['preco']:<10} {p['ativo']:<10}")
+        print(f"{p['nome']:<20}  {p['equipa']:<10} {p['peso']:<10} {p['altura']:<15} {p['potencia']:<10} {p['preco']:<10} {p['ativo']:<10}")
 
 # --------------------------
 # Função de ordenação

@@ -4,6 +4,7 @@ import os
 def obter_dados():
     dados = {}
     dados["nome"] = input("Digite o nome do carro: ")
+    dados["equipa"] = input("Digite a equipa do carro: ")
     dados["peso"] = input("Digite o peso do carro: ")
     dados["altura"] = input("Digite a altura do carro(em cm): ")
     dados["potencia"] = input("Digite a potencia do carro(em cavalos): ")
