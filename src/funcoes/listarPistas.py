@@ -23,6 +23,7 @@ def listar_pistas(ficheiro="pistas.json"):
             print("Nenhuma pista encontrada no ficheiro.")
     except FileNotFoundError:
         print("O ficheiro 'pistas.json' não foi encontrado na pasta 'jsons'.")
+        
     except json.JSONDecodeError:
         print("Erro ao ler o ficheiro JSON. Ele pode estar corrompido ou mal formatado.")
 
