@@ -19,12 +19,12 @@ def login():
         if user:
             password = input("Escreve a tua password: ")
             if password == user.get("password"):
-                print(f"✅ Benvindo de volta, '{name}'!")
+                print(f"Benvindo de volta, '{name}'!")
                 permissao = user.get("permissao")
                 break
             else:
-                print("❌ Password incorreta, por favor tente outra vez.")
+                print("Password incorreta, por favor tente outra vez.")
         else:
-            print(f"⚠️ O nome '{name}' nao existe. Por favor tente um nome diferente.")
+            print(f"O nome '{name}' nao existe. Por favor tente um nome diferente.")
 
     return name, permissao

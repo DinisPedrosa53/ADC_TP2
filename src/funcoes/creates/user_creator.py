@@ -18,7 +18,7 @@ def user_creator():
     while True:
         name = input("Escreve o teu nome: ")
         if any(user["nome"].lower() == name.lower() for user in data):
-            print(f"⚠️ O nome '{name}' ja existe. Por favor escolhe um nome diferente.")
+            print(f"O nome '{name}' ja existe. Por favor escolhe um nome diferente.")
         else:
             break
 
@@ -49,7 +49,6 @@ def user_creator():
     elif permissao == 4:
         permissao = "utilizador"
 
-    # Step 4: Create new user record
     new_user = {
         "nome": name,
         "idade": age,
@@ -58,10 +57,9 @@ def user_creator():
         "permissao" : permissao
     }
 
-    # Step 5: Append and save
     data.append(new_user)
 
     with open(filename, "w") as file:
         json.dump(data, file, indent=4)
 
-    print(f"✅ New user '{name}' added successfully!")
+    print(f"Novo utilizador '{name}' adicionado com sucesso!")

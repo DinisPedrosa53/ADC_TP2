@@ -1,33 +1,28 @@
-# Ficheiro main do projeto
 import os
 import json
+from funcoes.creates.user_creator import user_creator
 from funcoes.user_login import login
-from funcoes.user_creator import user_creator
-from funcoes.criarEquipas import criar_equipa
-from funcoes.criarPiloto import criar_piloto
-from funcoes.criarCorrida import criar_corrida
-from funcoes.criarCarro import criar_carro
-from funcoes.criarMembroEquipa import criar_membro_equipa
-from funcoes.criarPista import criar_pista
-from funcoes.listarPontos import *
-from funcoes.listarEquipas import listagem_equipas
-from funcoes.listarCarros import listagem_carros
-from funcoes.listarPilotos import listagem_pilotos
-from funcoes.listarMembroEquipa import listagem_membro_equipas
-from funcoes.listarCorridas import listagem_corridas
-from funcoes.listarPistas import listagem_pistas
-from funcoes.editarEquipa import editar_equipa
-from funcoes.editarPiloto import editar_piloto
-from funcoes.apagarEquipas import apagar_equipa
-from funcoes.apagarPilotos import apagar_piloto
+from funcoes.creates.criarEquipas import criar_equipa
+from funcoes.creates.criarPiloto import criar_piloto
+from funcoes.creates.criarCorrida import criar_corrida
+from funcoes.creates.criarCarro import criar_carro
+from funcoes.creates.criarMembroEquipa import criar_membro_equipa
+from funcoes.creates.criarPista import criar_pista
+from funcoes.lists.listarPontos import *
+from funcoes.lists.listarEquipas import listagem_equipas
+from funcoes.lists.listarCarros import listagem_carros
+from funcoes.lists.listarPilotos import listagem_pilotos
+from funcoes.lists.listarMembroEquipa import listagem_membro_equipas
+from funcoes.lists.listarCorridas import listagem_corridas
+from funcoes.lists.listarPistas import listagem_pistas
+from funcoes.edits.editarEquipa import editar_equipa
+from funcoes.edits.editarPiloto import editar_piloto
+from funcoes.deletes.apagarEquipas import apagar_equipa
+from funcoes.deletes.apagarPilotos import apagar_piloto
 
 
 inform = None
 
-    
-
-#   para que depois seja possível tratar de como as permissões vão funcionar
-#
 # Menu básico com loop para manipular dados nos ficheiros JSON
 def main(permissao):
     while True:
