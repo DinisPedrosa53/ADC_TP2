@@ -46,7 +46,7 @@ def apagar_carro():
         return
 
     # Listar os carros pelo nome
-    print("\n--- LISTA DE carroS ---")
+    print("\n--- LISTA DE CARROSs ---")
     for idx, carro in enumerate(carros, start=1):
         print(f"{idx} - {carro['nome']}")
 

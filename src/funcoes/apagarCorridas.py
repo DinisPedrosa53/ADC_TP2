@@ -46,7 +46,7 @@ def apagar_corrida():
         return
 
     # Listar as corridas pelo nome
-    print("\n--- LISTA DE corridaS ---")
+    print("\n--- LISTA DE  CORRIDAS ---")
     for idx, corrida in enumerate(corridas, start=1):
         print(f"{idx} - {corrida['nome']}")
 
