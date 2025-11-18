@@ -46,7 +46,7 @@ def apagar_pista():
         return
 
     # Listar as pistas pelo nome
-    print("\n--- LISTA DE pistaS ---")
+    print("\n--- LISTA DE PISTAS ---")
     for idx, pista in enumerate(pistas, start=1):
         print(f"{idx} - {pista['nome']}")
 
