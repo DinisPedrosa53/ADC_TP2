@@ -185,7 +185,7 @@ def main():
                 os.system("cls")
                 listagem_pistas()
                 input("Enter para continuar...")
-                
+
         elif opcao1 == "8":
             os.system("cls")
             print("Menu -> Carros")
@@ -209,6 +209,7 @@ def main():
                 os.system("cls")
                 print("Saindo...")
                 break  # Sai do loop e termina o programa
+
         
 if __name__ == "__main__":
     main()
