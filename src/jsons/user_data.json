@@ -12,5 +12,12 @@
         "email": "uytre",
         "password": "123",
         "permissao": "FIA"
+    },
+    {
+        "nome": "Rafael",
+        "idade": 19,
+        "email": "rafa.hp2006@gmail.com",
+        "password": "123",
+        "permissao": "admin"
     }
 ]

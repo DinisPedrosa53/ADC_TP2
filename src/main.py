@@ -49,13 +49,16 @@ def main(permissao):
             opcao2 = input("Escolha: ")
             if opcao2 == "1":
                 os.system("cls")
-                # Chamar função para criar utilizador
-                pass  # Placeholder for user creation function
+                user_creator()
 
             elif opcao2 == "2":
                 os.system("cls")
                 # Chamar função para listar utilizadores
                 pass  # Placeholder for user listing function
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
             
         elif opcao1 == "2":
             os.system("cls")
@@ -82,6 +85,10 @@ def main(permissao):
             elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
                 os.system("cls")
                 apagar_equipa()
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
                 input("Enter para continuar...")
                 
 
@@ -110,6 +117,11 @@ def main(permissao):
                 os.system("cls")
                 apagar_piloto()
                 input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
+            
 
         elif opcao1 == "4":
             os.system("cls")
@@ -127,6 +139,18 @@ def main(permissao):
             elif opcao2 == "2":
                 os.system("cls")
                 
+                input("Enter para continuar...")
+            elif opcao2 == "3" and (permissao == "admin"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
                 input("Enter para continuar...")
 
         elif opcao1 == "5":
@@ -147,6 +171,19 @@ def main(permissao):
                 os.system("cls")
                 listagem_membro_equipas()
                 input("Enter para continuar...")
+            elif opcao2 == "3" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
+
 
         elif opcao1 == "6":
             os.system("cls")
@@ -166,6 +203,19 @@ def main(permissao):
                 os.system("cls")
                 listagem_corridas()
                 input("Enter para continuar...")
+            elif opcao2 == "3" and (permissao == "admin" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
+
 
         elif opcao1 == "7":
             os.system("cls")
@@ -186,6 +236,19 @@ def main(permissao):
                 os.system("cls")
                 listagem_pistas()
                 input("Enter para continuar...")
+            elif opcao2 == "3" and (permissao == "admin" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "FIA"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
+
 
         elif opcao1 == "8":
             os.system("cls")
@@ -205,11 +268,27 @@ def main(permissao):
                 os.system("cls")
                 listagem_carros()
                 input("Enter para continuar...")
+            elif opcao2 == "3" and (permissao == "admin" or permissao == "chefe de corrida"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida"):
+                os.system("cls")
+                #placeholde função
+                input("Enter para continuar...")
+            else:
+                os.system("cls")
+                print("Opção inválida/ permissão negada.")
+                input("Enter para continuar...")
                 
         elif opcao1 == "0":
                 os.system("cls")
                 print("Saindo...")
                 break  # Sai do loop e termina o programa
+        else:
+            os.system("cls")
+            print("Opção inválida/ permissão negada.")
+            input("Enter para continuar...")
 
 
 
