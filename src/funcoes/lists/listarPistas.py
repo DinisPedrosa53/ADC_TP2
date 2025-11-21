@@ -18,7 +18,7 @@ def listar_pistas(ficheiro="pistas.json"):
 
             # Listando as pistas
             for pista in pistas:
-                print(f"{pista['nome']:<20} {pista['distancia']:<15} {pista['ncurva']:<15} {pista['recordevolta']:<15}")
+                print(f"{pista['nome']:<20} {pista['distancia']:<15} {pista['ncurvas']:<15} {pista['recordevolta']:<15}")
         else:
             print("Nenhuma pista encontrada no ficheiro.")
     except FileNotFoundError:
