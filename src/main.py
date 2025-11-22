@@ -1,13 +1,14 @@
 import os
 import json
-from funcoes.creates.user_creator import user_creator
-from funcoes.user_login import login
+from funcoes.creates.criarUtilizador import criar_utilizador
+from funcoes.loginUtilizadores import login
 from funcoes.creates.criarEquipas import criar_equipa
 from funcoes.creates.criarPiloto import criar_piloto
 from funcoes.creates.criarCorrida import criar_corrida
 from funcoes.creates.criarCarro import criar_carro
 from funcoes.creates.criarMembroEquipa import criar_membro_equipa
 from funcoes.creates.criarPista import criar_pista
+
 from funcoes.lists.listarPontos import *
 from funcoes.lists.listarEquipas import listagem_equipas
 from funcoes.lists.listarCarros import listagem_carros
@@ -15,10 +16,23 @@ from funcoes.lists.listarPilotos import listagem_pilotos
 from funcoes.lists.listarMembroEquipa import listagem_membro_equipas
 from funcoes.lists.listarCorridas import listagem_corridas
 from funcoes.lists.listarPistas import listagem_pistas
+from funcoes.lists.listarUtilizadores import listagem_utilizadores
+
 from funcoes.edits.editarEquipa import editar_equipa
 from funcoes.edits.editarPiloto import editar_piloto
+from funcoes.edits.editarCorrida import editar_corrida
+from funcoes.edits.editarCarro import editar_carro
+from funcoes.edits.editarMembro import editar_membro
+from funcoes.edits.editarPista import editar_pista
+from funcoes.edits.editarUtilizador import editar_utilizador
+
 from funcoes.deletes.apagarEquipas import apagar_equipa
 from funcoes.deletes.apagarPilotos import apagar_piloto
+from funcoes.deletes.apagarCarros import apagar_carro
+from funcoes.deletes.apagarCorridas import apagar_corrida
+from funcoes.deletes.apagarUtilizadores import apagar_utilizador
+from funcoes.deletes.apagarPistas import apagar_pista
+from funcoes.deletes.apagarMembrosEquipas import apagar_membro_equipa
 
 
 inform = None
@@ -46,15 +60,24 @@ def main(permissao):
             print("Opções")
             print("1- Criar")
             print("2- Listar")
+            print("3- Editar")
+            print("4- Apagar")
             opcao2 = input("Escolha: ")
             if opcao2 == "1":
                 os.system("cls")
-                user_creator()
-
+                criar_utilizador()
             elif opcao2 == "2":
                 os.system("cls")
-                # Chamar função para listar utilizadores
-                pass  # Placeholder for user listing function
+                listagem_utilizadores()
+                input("Enter para continuar...")
+            elif opcao2 == "3":
+                os.system("cls")
+                editar_utilizador()
+                input("Enter para continuar...")
+            elif opcao2 == "4":
+                os.system("cls")
+                apagar_utilizador()
+                input("Enter para continuar...")
             else:
                 os.system("cls")
                 print("Opção inválida/ permissão negada.")
@@ -173,11 +196,11 @@ def main(permissao):
                 input("Enter para continuar...")
             elif opcao2 == "3" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                editar_membro()
                 input("Enter para continuar...")
             elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                apagar_membro_equipa()
                 input("Enter para continuar...")
             else:
                 os.system("cls")
@@ -205,11 +228,11 @@ def main(permissao):
                 input("Enter para continuar...")
             elif opcao2 == "3" and (permissao == "admin" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                editar_corrida()
                 input("Enter para continuar...")
             elif opcao2 == "4" and (permissao == "admin" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                apagar_corrida()
                 input("Enter para continuar...")
             else:
                 os.system("cls")
@@ -219,7 +242,6 @@ def main(permissao):
 
         elif opcao1 == "7":
             os.system("cls")
-
             print("Menu -> Pistas")
             print("Opções")
             print("1- Criar")
@@ -238,11 +260,11 @@ def main(permissao):
                 input("Enter para continuar...")
             elif opcao2 == "3" and (permissao == "admin" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                editar_pista()
                 input("Enter para continuar...")
             elif opcao2 == "4" and (permissao == "admin" or permissao == "FIA"):
                 os.system("cls")
-                #placeholde função
+                apagar_pista()
                 input("Enter para continuar...")
             else:
                 os.system("cls")
@@ -270,11 +292,11 @@ def main(permissao):
                 input("Enter para continuar...")
             elif opcao2 == "3" and (permissao == "admin" or permissao == "chefe de corrida"):
                 os.system("cls")
-                #placeholde função
+                editar_carro()
                 input("Enter para continuar...")
             elif opcao2 == "4" and (permissao == "admin" or permissao == "chefe de corrida"):
                 os.system("cls")
-                #placeholde função
+                apagar_carro()
                 input("Enter para continuar...")
             else:
                 os.system("cls")
@@ -296,7 +318,7 @@ while True:
 
     escolha = input("1 - criar utilizador\n2 - login\nEscolha: ")
     if escolha == "1":
-        user_creator()
+        criar_utilizador()
     elif escolha == "2":
         inform = login()
         break

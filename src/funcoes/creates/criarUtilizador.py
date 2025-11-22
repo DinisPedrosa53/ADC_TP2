@@ -1,20 +1,17 @@
 import json
 import os
 
-# File name
-filename = "src/jsons/user_data.json"
-def user_creator():
-    # Step 1: Load existing data if the file exists
+filename = "src/jsons/utilizadores.json"
+def criar_utilizador():
     if os.path.exists(filename):
         with open(filename, "r") as file:
             try:
                 data = json.load(file)
             except json.JSONDecodeError:
-                data = []  # If file is empty or invalid
+                data = []
     else:
         data = []
 
-    # Step 2: Ask for name until it's unique
     while True:
         os.system("cls")
         name = input("Escreve o teu nome: ")
@@ -24,7 +21,6 @@ def user_creator():
         else:
             break
 
-    # Step 3: Ask for other info
     os.system("cls")
     age = int(input("qual é a tua idade: "))
     os.system("cls")

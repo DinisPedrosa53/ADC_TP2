@@ -1,6 +1,6 @@
 [
     {
-        "nome": "B",
+        "nome": "Bc",
         "idade": "A",
         "altura": "A",
         "peso": "A",
@@ -10,6 +10,8 @@
         "equipa_atual": "A",
         "pontosPiloto": "20",
         "vitorias": "A",
+        "data_contrato": "20/01/2020",
+        "ativo": "1",
         "salario": "A"
     },
     {
@@ -23,20 +25,8 @@
         "equipa_atual": "A",
         "pontosPiloto": "276",
         "vitorias": "A",
+        "data_contrato": "30/01/2020",
+        "ativo": "1",
         "salario": "A"
-    },
-    {
-        "nome": "1",
-        "idade": "1",
-        "altura": "1",
-        "peso": "1",
-        "equipas": "",
-        "telefone": "1",
-        "morada": "1",
-        "equipa_atual": "abaaa",
-        "pontosPiloto": "12",
-        "vitorias": "12",
-        "data_contrato": "21",
-        "salario": "12"
     }
 ]

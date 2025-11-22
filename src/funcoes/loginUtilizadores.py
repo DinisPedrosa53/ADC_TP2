@@ -1,7 +1,7 @@
 import json 
 import os
 
-filename = "src/jsons/user_data.json"
+filename = "src/jsons/utilizadores.json"
 
 def login():
     if os.path.exists(filename):
@@ -9,7 +9,7 @@ def login():
             try:
                 data = json.load(file)
             except json.JSONDecodeError:
-                data = []  # If file is empty or invalid
+                data = []
     else:
         data = []
 
