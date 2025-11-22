@@ -33,7 +33,6 @@ def criar_utilizador():
     print("4 - utilizador")
     while True:
         try:
-            os.system("cls")
             permissao = int(input("qual a tua permissão: "))
             if permissao < 1 or permissao > 4:
                 os.system("cls")

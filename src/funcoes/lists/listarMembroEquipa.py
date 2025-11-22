@@ -5,7 +5,7 @@ import os
 def listar_membro_equipas(ficheiro="membro_equipas.json"):
     try:
         # Construir caminho para o ficheiro na pasta "Json"
-        caminho_ficheiro = os.path.join("jsons", ficheiro)
+        caminho_ficheiro = os.path.join("src/jsons", ficheiro)
 
         # Abrir o ficheiro JSON e carregar os dados
         with open(caminho_ficheiro, "r", encoding="utf-8") as file:
