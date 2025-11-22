@@ -16,15 +16,20 @@ def user_creator():
 
     # Step 2: Ask for name until it's unique
     while True:
+        os.system("cls")
         name = input("Escreve o teu nome: ")
         if any(user["nome"].lower() == name.lower() for user in data):
+            os.system("cls")
             print(f"O nome '{name}' ja existe. Por favor escolhe um nome diferente.")
         else:
             break
 
     # Step 3: Ask for other info
+    os.system("cls")
     age = int(input("qual é a tua idade: "))
+    os.system("cls")
     email = input("escreve o teu email: ")
+    os.system("cls")
     password = input("qual a tua password: ")
     print("1 - admin")
     print("2 - chefe de corrida")
@@ -32,12 +37,15 @@ def user_creator():
     print("4 - utilizador")
     while True:
         try:
+            os.system("cls")
             permissao = int(input("qual a tua permissão: "))
             if permissao < 1 or permissao > 4:
+                os.system("cls")
                 print("erro, permissão invalida")
             else:
                 break
         except:
+            os.system("cls")
             print("digite um valor valido")
         
     if permissao == 1:
@@ -61,5 +69,5 @@ def user_creator():
 
     with open(filename, "w") as file:
         json.dump(data, file, indent=4)
-
+    os.system("cls")
     print(f"Novo utilizador '{name}' adicionado com sucesso!")
