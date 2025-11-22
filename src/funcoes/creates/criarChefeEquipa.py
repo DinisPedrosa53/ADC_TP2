@@ -43,7 +43,7 @@ def adicionar_chefe_equipa_ao_ficheiro(novo_chefe_equipa, ficheiro="chefes_equip
 
 
 # Função principal para adicionar um chefe de equipa
-def main():
+def criar_chefe():
     novo_chefe_equipa = obter_dados()
     adicionar_chefe_equipa_ao_ficheiro(novo_chefe_equipa)
 

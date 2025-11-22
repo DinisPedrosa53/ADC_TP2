@@ -8,6 +8,7 @@ from funcoes.creates.criarCorrida import criar_corrida
 from funcoes.creates.criarCarro import criar_carro
 from funcoes.creates.criarMembroEquipa import criar_membro_equipa
 from funcoes.creates.criarPista import criar_pista
+from funcoes.creates.criarChefeEquipa import criar_chefe
 
 from funcoes.lists.listarPontos import *
 from funcoes.lists.listarEquipas import listagem_equipas
@@ -17,6 +18,7 @@ from funcoes.lists.listarMembroEquipa import listagem_membro_equipas
 from funcoes.lists.listarCorridas import listagem_corridas
 from funcoes.lists.listarPistas import listagem_pistas
 from funcoes.lists.listarUtilizadores import listagem_utilizadores
+from funcoes.lists.listarChefes import listagem_chefes
 
 from funcoes.edits.editarEquipa import editar_equipa
 from funcoes.edits.editarPiloto import editar_piloto
@@ -25,6 +27,7 @@ from funcoes.edits.editarCarro import editar_carro
 from funcoes.edits.editarMembro import editar_membro
 from funcoes.edits.editarPista import editar_pista
 from funcoes.edits.editarUtilizador import editar_utilizador
+from funcoes.edits.editarChefeEquipa import editar_chefe_equipa
 
 from funcoes.deletes.apagarEquipas import apagar_equipa
 from funcoes.deletes.apagarPilotos import apagar_piloto
@@ -33,6 +36,7 @@ from funcoes.deletes.apagarCorridas import apagar_corrida
 from funcoes.deletes.apagarUtilizadores import apagar_utilizador
 from funcoes.deletes.apagarPistas import apagar_pista
 from funcoes.deletes.apagarMembrosEquipas import apagar_membro_equipa
+from funcoes.deletes.apagarChefesEquipas import apagar_chefe_equipa
 
 
 inform = None
@@ -158,18 +162,18 @@ def main(permissao):
 
             if opcao2 == "1" and (permissao == "admin"):
                 os.system("cls")
-                
+                criar_chefe()
             elif opcao2 == "2":
                 os.system("cls")
-                
+                listagem_chefes()
                 input("Enter para continuar...")
             elif opcao2 == "3" and (permissao == "admin"):
                 os.system("cls")
-                #placeholde função
+                editar_chefe_equipa()
                 input("Enter para continuar...")
             elif opcao2 == "4" and (permissao == "admin"):
                 os.system("cls")
-                #placeholde função
+                apagar_chefe_equipa()
                 input("Enter para continuar...")
             else:
                 os.system("cls")
