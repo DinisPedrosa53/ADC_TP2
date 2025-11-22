@@ -3,7 +3,7 @@ import os
 
 # Caminho do ficheiro JSON dentro da pasta Json
 PASTA = "src/jsons"
-FICHEIRO = "carros.json"
+FICHEIRO = "chefes_equipas.json"
 CAMINHO_FICHEIRO = os.path.join(PASTA, FICHEIRO)
 
 
@@ -25,47 +25,47 @@ def guardar_dados(dados):
         json.dump(dados, file, ensure_ascii=False, indent=4)
 
 
-# Função para editar um carro
-def editar_carro():
+# Função para editar um chefe de equipa
+def editar_chefe_equipa():
     dados = carregar_dados()
 
     if not dados:
-        print("Nenhum carro encontrada.")
+        print("Nenhum chefe de equipa encontrado.")
         return
 
-    print("\n=== carros Disponíveis ===")
-    for carro in dados:
-        print(f"- {carro['nome']}")
+    print("\n=== CHEFES DE EQUIPAS Disponíveis ===")
+    for chefe_equipa in dados:
+        print(f"- {chefe_equipa['nome']}")
 
-    nome = input("\nDigite o nome do carro que deseja editar: ")
+    nome = input("\nDigite o nome do chefe de equipa que deseja editar: ")
 
-    # Procurar carro pelo nome
-    carro_encontrado = None
-    for carro in dados:
-        if carro["nome"].lower() == nome.lower():
-            carro_encontrado = carro
+    # Procurar chefe de equipa pelo nome
+    chefe_equipa_encontrado = None
+    for chefe_equipa in dados:
+        if chefe_equipa["nome"].lower() == nome.lower():
+            chefe_equipa_encontrado = chefe_equipa
             break
 
-    if not carro_encontrado:
-        print("carro não encontrado!")
+    if not chefe_equipa_encontrado:
+        print("chefe de equipa não encontrado!")
         return
 
     print("\n=== Campos editáveis ===")
-    for chave in carro_encontrado.keys():
+    for chave in chefe_equipa_encontrado.keys():
         print(f"- {chave}")
 
     campo = input("\nDigite o nome do campo que deseja editar: ")
 
-    if campo not in carro_encontrado:
+    if campo not in chefe_equipa_encontrado:
         print("Campo inválido!")
         return
 
-    novo_valor = input(f"Novo valor para '{campo}' (atual: {carro_encontrado[campo]}): ")
+    novo_valor = input(f"Novo valor para '{campo}' (atual: {chefe_equipa_encontrado[campo]}): ")
 
-    carro_encontrado[campo] = novo_valor
+    chefe_equipa_encontrado[campo] = novo_valor
 
     guardar_dados(dados)
 
     print("\n Dados atualizados com sucesso!")
 
-#editar_carro()
+#editar_chefe_equipa()
