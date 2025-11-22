@@ -1,0 +1,11 @@
+[
+    {
+        "nome": "Zecas",
+        "equipa": "Ferrari",
+        "peso": "2003",
+        "altura": "100",
+        "potencia": "1000",
+        "preco": "100000",
+        "ativo": "1"
+    }
+]

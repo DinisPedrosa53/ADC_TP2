@@ -6,5 +6,13 @@
         "telefone": "123456789",
         "morada": "encowc",
         "equipa_atual": "Ferrari"
+    },
+    {
+        "nome": "A",
+        "idade": "A",
+        "equipas": "A",
+        "telefone": "A",
+        "morada": "A",
+        "equipa_atual": "A"
     }
 ]

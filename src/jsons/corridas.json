@@ -1,0 +1,13 @@
+[
+    {
+        "nome": "B",
+        "data": "1090",
+        "equipas": "a,B,C",
+        "cidade": "Lisboa",
+        "pais": "Portugal",
+        "horario": "10:00",
+        "tempo": "Chuva",
+        "bilhete": "10",
+        "podio": ""
+    }
+]

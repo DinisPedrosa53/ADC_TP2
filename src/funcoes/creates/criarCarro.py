@@ -5,7 +5,7 @@ def obter_dados():
     dados = {}
     dados["nome"] = input("Digite o nome do carro: ")
     dados["equipa"] = input("Digite a equipa do carro: ")
-    dados["peso"] = input("Digite o peso do carro: ")
+    dados["peso"] = input("Digite o peso do carro (em Kg): ")
     dados["altura"] = input("Digite a altura do carro(em cm): ")
     dados["potencia"] = input("Digite a potencia do carro(em cavalos): ")
     dados["preco"] = input("Digite o preço do carro: ")
