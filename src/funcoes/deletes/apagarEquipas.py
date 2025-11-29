@@ -1,10 +1,20 @@
 import json
 import os
 
-# --------------------------
-# Carrega equipas do ficheiro
-# --------------------------
 def carregar_equipas(ficheiro="equipas.json"):
+    """
+    Carrega a lista de equipas a partir de um ficheiro JSON.
+
+    Esta função lê os dados do ficheiro JSON especificado (por defeito `equipas.json`) 
+    localizado na pasta `src/jsons` e retorna a lista de equipas.
+
+    Args:
+        ficheiro (str, opcional): Nome do ficheiro JSON a ser carregado. Padrão é `"equipas.json"`.
+
+    Returns:
+        list: Retorna uma lista de dicionários, cada um representando uma equipa.
+              Retorna uma lista vazia se o ficheiro não existir ou estiver corrompido.
+    """
     caminho = os.path.join("src/jsons", ficheiro)
 
     try:
@@ -20,10 +30,17 @@ def carregar_equipas(ficheiro="equipas.json"):
         return []
 
 
-# --------------------------
-# Grava equipas no ficheiro
-# --------------------------
 def guardar_equipas(equipas, ficheiro="equipas.json"):
+    """
+    Guarda a lista de equipas em um ficheiro JSON.
+
+    Esta função escreve a lista de equipas fornecida no ficheiro JSON especificado,
+    garantindo que a pasta `src/jsons` exista.
+
+    Args:
+        equipas (list): Lista de dicionários representando as equipas.
+        ficheiro (str, opcional): Nome do ficheiro JSON onde os dados serão salvos. Padrão é `"equipas.json"`.
+    """
     caminho = os.path.join("src/jsons", ficheiro)
 
     # Certifica que a pasta existe
@@ -35,10 +52,23 @@ def guardar_equipas(equipas, ficheiro="equipas.json"):
         json.dump(equipas, file, ensure_ascii=False, indent=4)
 
 
-# --------------------------
-# Apagar equipa
-# --------------------------
 def apagar_equipa():
+    """
+    Apaga uma equipa da lista armazenada no ficheiro JSON.
+
+    Esta função permite remover uma equipa específica da lista de equipas
+    guardada em ficheiro JSON, garantindo que os dados sejam atualizados
+    corretamente após a remoção.
+
+    Passos executados pela função:
+        1. Carrega a lista de equipas usando `carregar_equipas()`.
+        2. Exibe todas as equipas registadas pelo nome.
+        3. Solicita ao utilizador o nome da equipa que deseja apagar.
+        4. Remove a equipa correspondente da lista.
+        5. Guarda a lista atualizada usando `guardar_equipas()`.
+        6. Exibe mensagens apropriadas se a equipa não for encontrada 
+           ou se a operação for bem-sucedida.
+    """
     equipas = carregar_equipas()
 
     if not equipas:
@@ -59,6 +89,6 @@ def apagar_equipa():
         print("A equipa não foi encontrada!")
         return
 
-    # Salvar alterações
+    # Guardar alterações
     guardar_equipas(equipas_filtradas)
     print(f"Equipa '{nome}' apagada com sucesso!")

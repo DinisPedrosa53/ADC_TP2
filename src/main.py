@@ -10,7 +10,6 @@ from funcoes.creates.criarMembroEquipa import criar_membro_equipa
 from funcoes.creates.criarPista import criar_pista
 from funcoes.creates.criarChefeEquipa import criar_chefe
 
-from funcoes.lists.listarPontos import *
 from funcoes.lists.listarEquipas import listagem_equipas
 from funcoes.lists.listarCarros import listagem_carros
 from funcoes.lists.listarPilotos import listagem_pilotos
@@ -43,6 +42,31 @@ inform = None
 
 # Menu básico com loop para manipular dados nos ficheiros JSON
 def main(permissao):
+    """
+    Menu principal de gestão de dados do sistema.
+
+    Este menu apresenta várias categorias (utilizadores, pilotos, equipas, corridas, etc.)
+    e permite ao utilizador realizar operações como:
+
+        - Criar
+        - Listar
+        - Editar
+        - Apagar
+
+    As permissões de acesso dependem do tipo de utilizador que fez login:
+        - admin: acesso total a tudo
+        - chefe de corrida: gestão de pilotos, equipas, carros, membros
+        - FIA: gestão de corridas, pistas, equipas, membros
+        - utilizador: apenas leitura/listagem dos dados
+
+    Args:
+        permissao (str): Permissão do utilizador autenticado.
+                         Os valores possíveis são:
+                         "admin", "chefe de corrida", "FIA", "utilizador".
+
+    Loop:
+        A função mantém um ciclo contínuo até o utilizador escolher a opção "0" para sair.
+    """
     while True:
         os.system("cls")
         print("Menu")
@@ -316,27 +340,36 @@ def main(permissao):
             print("Opção inválida/ permissão negada.")
             input("Enter para continuar...")
 
-
-
-while True:
-
-    escolha = input("1 - criar utilizador\n2 - login\nEscolha: ")
-    if escolha == "1":
-        criar_utilizador()
-    elif escolha == "2":
-        inform = login()
-        break
-name = inform[0]
-permissao = inform[1]
-
-if permissao == "admin":
-    main(permissao)
-elif permissao == "chefe de corrida":
-    main(permissao)
-elif permissao == "FIA":
-    main(permissao)
-elif permissao == "utilizador":
-    main(permissao)
-        
 if __name__ == "__main__":
-    main()
+    """
+    Ponto de entrada do programa.
+
+    Aqui o utilizador escolhe entre:
+        1 - criar uma nova conta
+        2 - fazer login
+
+    Após login bem-sucedido, o sistema obtém:
+        - nome do utilizador
+        - permissão associada
+
+    E abre o menu principal com base nesse nível de permissão.
+    """
+    while True:
+        escolha = input("1 - criar utilizador\n2 - login\nEscolha: ")
+        if escolha == "1":
+            criar_utilizador()
+        elif escolha == "2":
+            inform = login()
+            break
+
+        name = inform[0]
+        permissao = inform[1]
+
+        if permissao == "admin":
+            main(permissao)
+        elif permissao == "chefe de corrida":
+            main(permissao)
+        elif permissao == "FIA":
+            main(permissao)
+        elif permissao == "utilizador":
+            main(permissao)

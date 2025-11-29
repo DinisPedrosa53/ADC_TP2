@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Login de Utilizadores &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Funções de Listagem" href="lists.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-funcoes.loginUtilizadores">
+<span id="login-de-utilizadores"></span><h1>Login de Utilizadores<a class="headerlink" href="#module-funcoes.loginUtilizadores" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.loginUtilizadores.login">
+<span class="sig-prename descclassname"><span class="pre">funcoes.loginUtilizadores.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/funcoes/loginUtilizadores.html#login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.loginUtilizadores.login" title="Link to this definition">¶</a></dt>
+<dd><p>Função para autenticar um utilizador existente.</p>
+<p>Esta função permite que um utilizador faça login no sistema através do terminal.
+Os dados dos utilizadores são armazenados em ficheiros JSON localizados em <cite>src/jsons/utilizadores.json</cite>.</p>
+<dl class="simple">
+<dt>Funcionamento:</dt><dd><ol class="arabic simple">
+<li><p>Verifica se o ficheiro de utilizadores existe; caso contrário, inicializa uma lista vazia.</p></li>
+<li><p>Solicita ao utilizador o nome.</p></li>
+<li><p>Verifica se o nome existe na lista de utilizadores.</p></li>
+<li><p>Se existir, pede a password e valida.</p></li>
+<li><p>Se o login for bem-sucedido, retorna o nome do utilizador e o nível de permissão.</p></li>
+<li><p>Em caso de erro (nome inexistente ou password incorreta), repete o processo até sucesso.</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Retorna uma tupla contendo:</dt><dd><ul class="simple">
+<li><p><cite>name</cite> (str): Nome do utilizador autenticado</p></li>
+<li><p><cite>permissao</cite> (str): Nível de permissão do utilizador (<cite>admin</cite>, <cite>chefe de corrida</cite>, <cite>FIA</cite>, <cite>utilizador</cite>)</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Outras ações:</dt><dd><ul class="simple">
+<li><p>A função limpa o terminal (<cite>os.system(“cls”)</cite>) entre os inputs para melhorar a experiência do utilizador.</p></li>
+<li><p>A função mantém o loop até que um login válido seja efetuado.</p></li>
+<li><p>Utiliza a correspondência de nomes de utilizador de forma <strong>case-insensitive</strong>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Módulos do Projeto</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../src.html">Módulo principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creates.html">Funções de Criação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deletes.html">Funções de Remoção</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edits.html">Funções de Edição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html">Funções de Listagem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Login de Utilizadores</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../modules.html">Módulos do Projeto</a><ul>
+      <li>Previous: <a href="lists.html" title="previous chapter">Funções de Listagem</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/funcoes/login_utilizadores.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

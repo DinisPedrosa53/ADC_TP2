@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarUtilizador</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_utilizador</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.loginUtilizadores</span><span class="w"> </span><span class="kn">import</span> <span class="n">login</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarEquipas</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_equipa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarPiloto</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_piloto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarCorrida</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_corrida</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarCarro</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_carro</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarMembroEquipa</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_membro_equipa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarPista</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_pista</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.creates.criarChefeEquipa</span><span class="w"> </span><span class="kn">import</span> <span class="n">criar_chefe</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarEquipas</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_equipas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarCarros</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_carros</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarPilotos</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_pilotos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarMembroEquipa</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_membro_equipas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarCorridas</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_corridas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarPistas</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_pistas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarUtilizadores</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_utilizadores</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.lists.listarChefes</span><span class="w"> </span><span class="kn">import</span> <span class="n">listagem_chefes</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarEquipa</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_equipa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarPiloto</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_piloto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarCorrida</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_corrida</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarCarro</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_carro</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarMembro</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_membro</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarPista</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_pista</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarUtilizador</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_utilizador</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.edits.editarChefeEquipa</span><span class="w"> </span><span class="kn">import</span> <span class="n">editar_chefe_equipa</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarEquipas</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_equipa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarPilotos</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_piloto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarCarros</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_carro</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarCorridas</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_corrida</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarUtilizadores</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_utilizador</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarPistas</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_pista</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarMembrosEquipas</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_membro_equipa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">funcoes.deletes.apagarChefesEquipas</span><span class="w"> </span><span class="kn">import</span> <span class="n">apagar_chefe_equipa</span>
+
+
+<span class="n">inform</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Menu básico com loop para manipular dados nos ficheiros JSON</span>
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../src.html#main.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">permissao</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Menu principal de gestão de dados do sistema.</span>
+
+<span class="sd">    Este menu apresenta várias categorias (utilizadores, pilotos, equipas, corridas, etc.)</span>
+<span class="sd">    e permite ao utilizador realizar operações como:</span>
+
+<span class="sd">        - Criar</span>
+<span class="sd">        - Listar</span>
+<span class="sd">        - Editar</span>
+<span class="sd">        - Apagar</span>
+
+<span class="sd">    As permissões de acesso dependem do tipo de utilizador que fez login:</span>
+<span class="sd">        - admin: acesso total a tudo</span>
+<span class="sd">        - chefe de corrida: gestão de pilotos, equipas, carros, membros</span>
+<span class="sd">        - FIA: gestão de corridas, pistas, equipas, membros</span>
+<span class="sd">        - utilizador: apenas leitura/listagem dos dados</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        permissao (str): Permissão do utilizador autenticado.</span>
+<span class="sd">                         Os valores possíveis são:</span>
+<span class="sd">                         &quot;admin&quot;, &quot;chefe de corrida&quot;, &quot;FIA&quot;, &quot;utilizador&quot;.</span>
+
+<span class="sd">    Loop:</span>
+<span class="sd">        A função mantém um ciclo contínuo até o utilizador escolher a opção &quot;0&quot; para sair.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Utilizadores&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Equipas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Pilotos&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Chefes&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5- Membros de Equipas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;6- Corridas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;7- Pistas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;8- Carros&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0- Sair&quot;</span><span class="p">)</span>
+        <span class="n">opcao1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Utilizadores&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_utilizador</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_utilizadores</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_utilizador</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_utilizador</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Equipas&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>  
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_equipa</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_equipas</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_equipa</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_equipa</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+                
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Pilotos&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_piloto</span><span class="p">()</span>           
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_pilotos</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_piloto</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_piloto</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Chefes&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_chefe</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_chefes</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_chefe_equipa</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_chefe_equipa</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Membros de Equipa&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>  <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_membro_equipa</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_membro_equipas</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_membro</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_membro_equipa</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Corridas&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>  <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_corrida</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_corridas</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_corrida</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_corrida</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Pistas&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>  <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_pista</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_pistas</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_pista</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_pista</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+
+
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menu -&gt; Carros&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opções&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1- Criar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2- Listar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3- Editar&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4- Apagar&quot;</span><span class="p">)</span>
+            <span class="n">opcao2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Escolha: &quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>  <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">criar_carro</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">listagem_carros</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">editar_carro</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">opcao2</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">or</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="n">apagar_carro</span><span class="p">()</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+                <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span>
+                
+        <span class="k">elif</span> <span class="n">opcao1</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saindo...&quot;</span><span class="p">)</span>
+                <span class="k">break</span>  <span class="c1"># Sai do loop e termina o programa</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;cls&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opção inválida/ permissão negada.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ponto de entrada do programa.</span>
+
+<span class="sd">    Aqui o utilizador escolhe entre:</span>
+<span class="sd">        1 - criar uma nova conta</span>
+<span class="sd">        2 - fazer login</span>
+
+<span class="sd">    Após login bem-sucedido, o sistema obtém:</span>
+<span class="sd">        - nome do utilizador</span>
+<span class="sd">        - permissão associada</span>
+
+<span class="sd">    E abre o menu principal com base nesse nível de permissão.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">escolha</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;1 - criar utilizador</span><span class="se">\n</span><span class="s2">2 - login</span><span class="se">\n</span><span class="s2">Escolha: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">escolha</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="n">criar_utilizador</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">escolha</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="n">inform</span> <span class="o">=</span> <span class="n">login</span><span class="p">()</span>
+            <span class="k">break</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">inform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">permissao</span> <span class="o">=</span> <span class="n">inform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
+            <span class="n">main</span><span class="p">(</span><span class="n">permissao</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;chefe de corrida&quot;</span><span class="p">:</span>
+            <span class="n">main</span><span class="p">(</span><span class="n">permissao</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;FIA&quot;</span><span class="p">:</span>
+            <span class="n">main</span><span class="p">(</span><span class="n">permissao</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">permissao</span> <span class="o">==</span> <span class="s2">&quot;utilizador&quot;</span><span class="p">:</span>
+            <span class="n">main</span><span class="p">(</span><span class="n">permissao</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Módulos do Projeto</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

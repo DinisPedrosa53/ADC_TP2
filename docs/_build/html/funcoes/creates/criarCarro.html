@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>criarCarro &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="criarChefeEquipa" href="criarChefeEquipa.html" />
+    <link rel="prev" title="Funções de Criação" href="../creates.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="criarcarro">
+<h1>criarCarro<a class="headerlink" href="#criarcarro" title="Link to this heading">¶</a></h1>
+<p>Módulo responsável por criar e manipular carros no sistema.</p>
+<section id="funcoes-para-obter-e-adicionar-dados">
+<h2>Funções para obter e adicionar dados<a class="headerlink" href="#funcoes-para-obter-e-adicionar-dados" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.creates.criarCarro.obter_dados">
+<span class="sig-prename descclassname"><span class="pre">funcoes.creates.criarCarro.</span></span><span class="sig-name descname"><span class="pre">obter_dados</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/creates/criarCarro.html#obter_dados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.creates.criarCarro.obter_dados" title="Link to this definition">¶</a></dt>
+<dd><p>Solicita ao utilizador as informações necessárias para criar um novo carro.</p>
+<p>Esta função recolhe vários dados através de inputs no terminal, permitindo
+que o utilizador introduza todas as características relevantes de um carro.
+Todos os valores são armazenados num dicionário.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Dicionário contendo os dados introduzidos pelo utilizador, com as chaves:</dt><dd><ul class="simple">
+<li><p>”nome”: Nome do carro.</p></li>
+<li><p>”equipa”: Equipa a que o carro pertence.</p></li>
+<li><p>”peso”: Peso do carro em quilogramas.</p></li>
+<li><p>”altura”: Altura do carro em centímetros.</p></li>
+<li><p>”potencia”: Potência do carro em cavalos.</p></li>
+<li><p>”preco”: Preço do carro.</p></li>
+<li><p>”ativo”: Indica se o carro está ativo para competir (1 = sim, 0 = não).</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.creates.criarCarro.adicionar_carro_ao_ficheiro">
+<span class="sig-prename descclassname"><span class="pre">funcoes.creates.criarCarro.</span></span><span class="sig-name descname"><span class="pre">adicionar_carro_ao_ficheiro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">novo_carro</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ficheiro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'carros.json'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/creates/criarCarro.html#adicionar_carro_ao_ficheiro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.creates.criarCarro.adicionar_carro_ao_ficheiro" title="Link to this definition">¶</a></dt>
+<dd><p>Adiciona um novo carro ao ficheiro JSON que armazena a lista de carros.</p>
+<p>Esta função garante que o ficheiro existe dentro da pasta <cite>src/jsons</cite>.
+Caso exista, carrega os dados atuais e acrescenta o novo carro. Caso não exista,
+cria uma lista nova e adiciona o carro, guardando tudo num novo ficheiro JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>novo_carro</strong> (<em>dict</em>) – Dicionário contendo os dados do novo carro.</p></li>
+<li><p><strong>ficheiro</strong> (<em>str</em><em>, </em><em>opcional</em>) – Nome do ficheiro JSON onde os carros são guardados.
+Por padrão, é usado “carros.json”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Outras ações:</dt><dd><ul class="simple">
+<li><p>Cria a pasta “src/jsons” se não existir.</p></li>
+<li><p>Lê e escreve no ficheiro JSON indicado.</p></li>
+<li><p>Mostra no terminal uma mensagem de sucesso.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="funcao-principal">
+<h2>Função principal<a class="headerlink" href="#funcao-principal" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.creates.criarCarro.criar_carro">
+<span class="sig-prename descclassname"><span class="pre">funcoes.creates.criarCarro.</span></span><span class="sig-name descname"><span class="pre">criar_carro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/creates/criarCarro.html#criar_carro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.creates.criarCarro.criar_carro" title="Link to this definition">¶</a></dt>
+<dd><p>Executa o processo completo de criação e armazenamento de um carro.</p>
+<p>Esta função coordena todo o fluxo:
+- Obtém os dados através de <cite>obter_dados()</cite>
+- Guarda-os no ficheiro JSON usando <cite>adicionar_carro_ao_ficheiro()</cite></p>
+<dl class="simple">
+<dt>Outras ações:</dt><dd><ul class="simple">
+<li><p>Solicita dados ao utilizador.</p></li>
+<li><p>Atualiza o ficheiro JSON com um novo registo.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ver-codigo-fonte">
+<h2>Ver código-fonte<a class="headerlink" href="#ver-codigo-fonte" title="Link to this heading">¶</a></h2>
+<p>Cada função acima possui um link <cite>[source]</cite> gerado automaticamente graças à extensão
+<cite>viewcode</cite>. Clique no link para ver o código completo de cada função.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Módulos do Projeto</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../src.html">Módulo principal</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../creates.html">Funções de Criação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deletes.html">Funções de Remoção</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../edits.html">Funções de Edição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lists.html">Funções de Listagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../login_utilizadores.html">Login de Utilizadores</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../modules.html">Módulos do Projeto</a><ul>
+  <li><a href="../creates.html">Funções de Criação</a><ul>
+      <li>Previous: <a href="../creates.html" title="previous chapter">Funções de Criação</a></li>
+      <li>Next: <a href="criarChefeEquipa.html" title="next chapter">criarChefeEquipa</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/funcoes/creates/criarCarro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>listarMembroEquipa &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="listarmembroequipa">
+<h1>listarMembroEquipa<a class="headerlink" href="#listarmembroequipa" title="Link to this heading">¶</a></h1>
+<p>Módulo responsável por listar membros de equipas no sistema.</p>
+<section id="funcoes-para-listar-dados">
+<h2>Funções para listar dados<a class="headerlink" href="#funcoes-para-listar-dados" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.lists.listarMembroEquipa.listar_membro_equipas">
+<span class="sig-prename descclassname"><span class="pre">funcoes.lists.listarMembroEquipa.</span></span><span class="sig-name descname"><span class="pre">listar_membro_equipas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ficheiro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'membro_equipas.json'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/lists/listarMembroEquipa.html#listar_membro_equipas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.lists.listarMembroEquipa.listar_membro_equipas" title="Link to this definition">¶</a></dt>
+<dd><p>Lista todos os membros de equipas armazenados em um ficheiro JSON.</p>
+<p>Esta função lê os dados do ficheiro JSON especificado (por defeito <cite>“membro_equipas.json”</cite>)
+localizado na pasta <cite>src/jsons</cite> e imprime uma tabela formatada contendo informações sobre
+cada membro de equipa, incluindo nome, idade, salário, equipa atual, histórico de equipas e tipo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ficheiro</strong> (<em>str</em><em>, </em><em>opcional</em>) – Nome do ficheiro JSON a ser lido. Padrão é <cite>“membro_equipas.json”</cite>.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceções tratadas:</dt><dd><p>FileNotFoundError: Caso o ficheiro não exista.
+json.JSONDecodeError: Caso o conteúdo do ficheiro não seja um JSON válido.</p>
+</dd>
+<dt>Saída:</dt><dd><p>Imprime uma tabela com os membros de equipa ou mensagens de erro apropriadas caso não haja
+membros no ficheiro ou se ocorrer algum problema de leitura.</p>
+</dd>
+<dt>Exemplo de uso:</dt><dd><p>listar_membro_equipas()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.lists.listarMembroEquipa.listagem_membro_equipas">
+<span class="sig-prename descclassname"><span class="pre">funcoes.lists.listarMembroEquipa.</span></span><span class="sig-name descname"><span class="pre">listagem_membro_equipas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/lists/listarMembroEquipa.html#listagem_membro_equipas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.lists.listarMembroEquipa.listagem_membro_equipas" title="Link to this definition">¶</a></dt>
+<dd><p>Função auxiliar para iniciar a listagem de membros de equipas.</p>
+<p>Esta função chama <cite>listar_membro_equipas()</cite> sem argumentos, utilizando o ficheiro padrão
+<cite>“membro_equipas.json”</cite>.</p>
+<dl class="simple">
+<dt>Exemplo de uso:</dt><dd><p>listagem_membro_equipas()</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ver-codigo-fonte">
+<h2>Ver código-fonte<a class="headerlink" href="#ver-codigo-fonte" title="Link to this heading">¶</a></h2>
+<p>Cada função acima possui um link <cite>[source]</cite> gerado automaticamente graças à extensão
+<cite>viewcode</cite>. Clique no link para ver o código completo de cada função.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Módulos do Projeto</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/funcoes/lists/listarMembroEquipa.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

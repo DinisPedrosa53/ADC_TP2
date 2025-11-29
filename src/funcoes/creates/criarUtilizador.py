@@ -3,6 +3,33 @@ import os
 
 filename = "src/jsons/utilizadores.json"
 def criar_utilizador():
+    """
+    Cria e regista um novo utilizador no sistema.
+
+    Esta função recolhe dados através do terminal e adiciona um novo
+    utilizador ao ficheiro JSON `utilizadores.json`. Inclui validações
+    importantes, tais como:
+
+    - Verificação da existência do ficheiro JSON.
+    - Tratamento de ficheiros JSON corrompidos ou vazios.
+    - Garantia de que não existem nomes duplicados.
+    - Validação da permissão escolhida (1 a 4).
+    - Conversão automática do número da permissão para o respetivo nome.
+
+    O utilizador insere:
+        - nome (único)
+        - idade
+        - email
+        - password
+        - permissão (admin, chefe de corrida, FIA ou utilizador)
+
+    Após validar todos os dados, o novo utilizador é guardado no ficheiro JSON.
+
+    Outras ações:
+        - Limpa o ecrã repetidamente com `os.system("cls")`.
+        - Lê e escreve no ficheiro JSON.
+        - Imprime mensagens de estado no terminal.
+    """
     if os.path.exists(filename):
         with open(filename, "r") as file:
             try:

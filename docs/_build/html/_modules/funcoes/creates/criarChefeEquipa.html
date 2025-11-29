@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>funcoes.creates.criarChefeEquipa &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for funcoes.creates.criarChefeEquipa</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<div class="viewcode-block" id="obter_dados">
+<a class="viewcode-back" href="../../../funcoes/creates/criarChefeEquipa.html#funcoes.creates.criarChefeEquipa.obter_dados">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">obter_dados</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solicita ao utilizador informações para criar um novo chefe de equipa.</span>
+
+<span class="sd">    Esta função interage com o utilizador através do terminal, pedindo os dados</span>
+<span class="sd">    necessários para registar um novo chefe de equipa. Cada campo é solicitado</span>
+<span class="sd">    individualmente e armazenado num dicionário.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dicionário contendo os dados inseridos pelo utilizador, com as chaves:</span>
+<span class="sd">            - &quot;nome&quot;: Nome completo do chefe de equipa.</span>
+<span class="sd">            - &quot;idade&quot;: Idade do chefe de equipa.</span>
+<span class="sd">            - &quot;equipas&quot;: Lista de equipas em que o chefe já participou</span>
+<span class="sd">              (fornecida como string separada por vírgulas).</span>
+<span class="sd">            - &quot;telefone&quot;: Número de telefone.</span>
+<span class="sd">            - &quot;morada&quot;: Morada completa.</span>
+<span class="sd">            - &quot;equipa_atual&quot;: Equipa onde trabalha atualmente.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dados</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite o nome completo do chefe de equipa: &quot;</span><span class="p">)</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;idade&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a idade do chefe de equipa: &quot;</span><span class="p">)</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;equipas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite as equipas que o chefe de equipa ja participou (separados por vírgula): &quot;</span><span class="p">)</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;telefone&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite o número de telefone do chefe de equipa: &quot;</span><span class="p">)</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;morada&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a morada do chefe de equipa: &quot;</span><span class="p">)</span>
+    <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;equipa_atual&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite a equipa que o chefe de equipa se encontra atualmente: &quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">dados</span></div>
+
+
+<span class="c1"># Função para adicionar um novo chefe de equipa ao ficheiro JSON</span>
+<div class="viewcode-block" id="adicionar_chefe_equipa_ao_ficheiro">
+<a class="viewcode-back" href="../../../funcoes/creates/criarChefeEquipa.html#funcoes.creates.criarChefeEquipa.adicionar_chefe_equipa_ao_ficheiro">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">adicionar_chefe_equipa_ao_ficheiro</span><span class="p">(</span><span class="n">novo_chefe_equipa</span><span class="p">,</span> <span class="n">ficheiro</span><span class="o">=</span><span class="s2">&quot;chefes_equipas.json&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adiciona um novo chefe de equipa a um ficheiro JSON.</span>
+
+<span class="sd">    Esta função garante que o ficheiro e a pasta onde ele deve estar existem.</span>
+<span class="sd">    Se o ficheiro já existir, os seus dados são carregados e o novo chefe</span>
+<span class="sd">    é acrescentado. Caso contrário, um novo ficheiro será criado.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        novo_chefe_equipa (dict): Dicionário contendo os dados do chefe de equipa</span>
+<span class="sd">            (normalmente fornecido pela função `obter_dados`).</span>
+<span class="sd">        ficheiro (str, opcional): Nome do ficheiro JSON onde os dados serão guardados.</span>
+<span class="sd">            Default: &quot;chefes_equipas.json&quot;.</span>
+
+<span class="sd">    Outras ações:</span>
+<span class="sd">        - Cria a pasta &quot;src/jsons&quot; caso não exista.</span>
+<span class="sd">        - Lê e escreve no ficheiro JSON correspondente.</span>
+<span class="sd">        - Exibe no terminal uma mensagem de sucesso.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Caminho completo dentro da pasta Json</span>
+    <span class="n">pasta</span> <span class="o">=</span> <span class="s2">&quot;src/jsons&quot;</span>
+    <span class="n">caminho_ficheiro</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pasta</span><span class="p">,</span> <span class="n">ficheiro</span><span class="p">)</span>
+
+    <span class="c1"># Criar pasta Json se não existir</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pasta</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">pasta</span><span class="p">)</span>
+
+    <span class="c1"># Verifica se o ficheiro já existe</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">caminho_ficheiro</span><span class="p">):</span>
+        <span class="c1"># Se o ficheiro existe, abre e carrega os dados existentes</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">caminho_ficheiro</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">dados</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Se o ficheiro não existe, cria uma lista vazia</span>
+        <span class="n">dados</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Adiciona um chefe de equipa à lista de chefes de equipas</span>
+    <span class="n">dados</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">novo_chefe_equipa</span><span class="p">)</span>
+
+    <span class="c1"># Guarda os dados (incluindo o novo chefe de equipa) no ficheiro JSON</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">caminho_ficheiro</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Novo chefe de equipa adicionado com sucesso!&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># Função principal para adicionar um chefe de equipa</span>
+<div class="viewcode-block" id="criar_chefe">
+<a class="viewcode-back" href="../../../funcoes/creates/criarChefeEquipa.html#funcoes.creates.criarChefeEquipa.criar_chefe">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">criar_chefe</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fluxo principal para criação de um novo chefe de equipa.</span>
+
+<span class="sd">    Esta função reúne todo o processo: obtém os dados do utilizador através</span>
+<span class="sd">    de `obter_dados()` e guarda-os no ficheiro JSON através de</span>
+<span class="sd">    `adicionar_chefe_equipa_ao_ficheiro()`.</span>
+
+<span class="sd">    Outras ações:</span>
+<span class="sd">        - Lê dados do utilizador pelo terminal.</span>
+<span class="sd">        - Escreve num ficheiro JSON.</span>
+<span class="sd">        - Exibe mensagem de confirmação.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">novo_chefe_equipa</span> <span class="o">=</span> <span class="n">obter_dados</span><span class="p">()</span>
+    <span class="n">adicionar_chefe_equipa_ao_ficheiro</span><span class="p">(</span><span class="n">novo_chefe_equipa</span><span class="p">)</span></div>
+
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Módulos do Projeto</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

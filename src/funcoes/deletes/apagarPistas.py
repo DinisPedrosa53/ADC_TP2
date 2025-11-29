@@ -1,10 +1,20 @@
 import json
 import os
 
-# --------------------------
-# Carrega pistas do ficheiro
-# --------------------------
 def carregar_pistas(ficheiro="pistas.json"):
+    """
+    Carrega a lista de pistas a partir de um ficheiro JSON.
+
+    Esta função lê os dados do ficheiro JSON especificado (por defeito `pistas.json`) 
+    localizado na pasta `src/jsons` e retorna a lista de pistas.
+
+    Args:
+        ficheiro (str, opcional): Nome do ficheiro JSON a ser carregado. Padrão é `"pistas.json"`.
+
+    Returns:
+        list: Retorna uma lista de dicionários, cada um representando uma pista.
+              Retorna uma lista vazia se o ficheiro não existir ou estiver corrompido.
+    """
     caminho = os.path.join("src/jsons", ficheiro)
 
     try:
@@ -20,10 +30,17 @@ def carregar_pistas(ficheiro="pistas.json"):
         return []
 
 
-# --------------------------
-# Grava pistas no ficheiro
-# --------------------------
 def guardar_pistas(pistas, ficheiro="pistas.json"):
+    """
+    Guarda a lista de pistas em um ficheiro JSON.
+
+    Esta função escreve a lista de pistas fornecida no ficheiro JSON especificado,
+    garantindo que a pasta `src/jsons` exista.
+
+    Args:
+        pistas (list): Lista de dicionários representando as pistas.
+        ficheiro (str, opcional): Nome do ficheiro JSON onde os dados serão salvos. Padrão é `"pistas.json"`.
+    """
     caminho = os.path.join("src/jsons", ficheiro)
 
     # Certifica que a pasta existe
@@ -35,10 +52,23 @@ def guardar_pistas(pistas, ficheiro="pistas.json"):
         json.dump(pistas, file, ensure_ascii=False, indent=4)
 
 
-# --------------------------
-# Apagar pista
-# --------------------------
 def apagar_pista():
+    """
+    Apaga uma pista da lista armazenada no ficheiro JSON.
+
+    Esta função permite remover uma pista específica da lista de pistas
+    guardada em ficheiro JSON, garantindo que os dados sejam atualizados corretamente
+    após a remoção.
+
+    Passos executados pela função:
+        1. Carrega a lista de pistas usando `carregar_pistas()`.
+        2. Exibe todas as pistas registadas pelo nome.
+        3. Solicita ao utilizador o nome da pista que deseja apagar.
+        4. Remove a pista correspondente da lista.
+        5. Guarda a lista atualizada usando `guardar_pistas()`.
+        6. Exibe mensagens apropriadas se a pista não for encontrada 
+           ou se a operação for bem-sucedida.
+    """
     pistas = carregar_pistas()
 
     if not pistas:
@@ -59,6 +89,6 @@ def apagar_pista():
         print("A pista não foi encontrada!")
         return
 
-    # Salvar alterações
+    # Guardar alterações
     guardar_pistas(pistas_filtradas)
     print(f"pista '{nome}' apagada com sucesso!")

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>editarCorrida &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="editarMembro.html" />
+    <link rel="prev" title="editarChefeEquipa" href="editarChefeEquipa.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="editarcorrida">
+<h1>editarCorrida<a class="headerlink" href="#editarcorrida" title="Link to this heading">¶</a></h1>
+<p>Módulo responsável por editar corridas no sistema.</p>
+<section id="funcoes-para-carregar-e-guardar-dados">
+<h2>Funções para carregar e guardar dados<a class="headerlink" href="#funcoes-para-carregar-e-guardar-dados" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.edits.editarCorrida.carregar_dados">
+<span class="sig-prename descclassname"><span class="pre">funcoes.edits.editarCorrida.</span></span><span class="sig-name descname"><span class="pre">carregar_dados</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/edits/editarCorrida.html#carregar_dados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.edits.editarCorrida.carregar_dados" title="Link to this definition">¶</a></dt>
+<dd><p>Carrega a lista de corridas do ficheiro JSON.</p>
+<p>Esta função garante que a pasta <cite>src/jsons</cite> exista e
+lê os dados do ficheiro <cite>corridas.json</cite>. Se o ficheiro não existir,
+retorna uma lista vazia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Lista de dicionários representando as corridas.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.edits.editarCorrida.guardar_dados">
+<span class="sig-prename descclassname"><span class="pre">funcoes.edits.editarCorrida.</span></span><span class="sig-name descname"><span class="pre">guardar_dados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dados</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/edits/editarCorrida.html#guardar_dados"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.edits.editarCorrida.guardar_dados" title="Link to this definition">¶</a></dt>
+<dd><p>Guarda a lista de corridas no ficheiro JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dados</strong> (<em>list</em>) – Lista de dicionários representando as corridas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="funcao-principal">
+<h2>Função principal<a class="headerlink" href="#funcao-principal" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcoes.edits.editarCorrida.editar_corrida">
+<span class="sig-prename descclassname"><span class="pre">funcoes.edits.editarCorrida.</span></span><span class="sig-name descname"><span class="pre">editar_corrida</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/funcoes/edits/editarCorrida.html#editar_corrida"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#funcoes.edits.editarCorrida.editar_corrida" title="Link to this definition">¶</a></dt>
+<dd><p>Permite editar os dados de uma corrida específica armazenada no ficheiro JSON.</p>
+<dl>
+<dt>Esta função realiza os seguintes passos:</dt><dd><blockquote>
+<div><ol class="arabic simple">
+<li><p>Carrega a lista de corridas usando <cite>carregar_dados()</cite>.</p></li>
+<li><p>Exibe todas as corridas disponíveis.</p></li>
+<li><p>Solicita ao utilizador o nome da corrida que deseja editar.</p></li>
+<li><p>Procura a corrida pelo nome.</p></li>
+<li><p>Exibe os campos disponíveis para edição.</p></li>
+<li><p>Solicita ao utilizador o campo que deseja alterar.</p></li>
+<li><p>Solicita o novo valor para o campo selecionado.</p></li>
+<li><p>Atualiza o valor do campo na corrida correspondente.</p></li>
+<li><p>Guarda a lista atualizada usando <cite>guardar_dados()</cite>.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="10">
+<li><p>Exibe mensagem de confirmação de atualização.</p></li>
+</ol>
+</dd>
+</dl>
+<p>Se a corrida não for encontrada ou se o campo informado for inválido,
+exibe mensagens apropriadas.</p>
+</dd></dl>
+
+</section>
+<section id="ver-codigo-fonte">
+<h2>Ver código-fonte<a class="headerlink" href="#ver-codigo-fonte" title="Link to this heading">¶</a></h2>
+<p>Cada função acima possui um link <cite>[source]</cite> gerado automaticamente graças à extensão
+<cite>viewcode</cite>. Clique no link para ver o código completo de cada função.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../modules.html">Módulos do Projeto</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../src.html">Módulo principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../creates.html">Funções de Criação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deletes.html">Funções de Remoção</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../edits.html">Funções de Edição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lists.html">Funções de Listagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../login_utilizadores.html">Login de Utilizadores</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../modules.html">Módulos do Projeto</a><ul>
+  <li><a href="../edits.html">Funções de Edição</a><ul>
+      <li>Previous: <a href="editarChefeEquipa.html" title="previous chapter">editarChefeEquipa</a></li>
+      <li>Next: <a href="editarMembro.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/funcoes/edits/editarCorrida.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

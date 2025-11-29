@@ -2,6 +2,28 @@ import json
 import os
 
 def listar_utilizadores(ficheiro="utilizadores.json"):
+    """
+    Lista todos os utilizadores armazenados em um ficheiro JSON.
+
+    Esta função lê os dados do ficheiro JSON especificado (por defeito `utilizadores.json`) 
+    localizado na pasta `src/jsons` e imprime uma tabela formatada com as informações 
+    de cada utilizador, incluindo nome, idade, email e tipo de permissão.
+
+    Args:
+        ficheiro (str, opcional): Nome do ficheiro JSON a ser lido. Padrão é `"utilizadores.json"`.
+
+    Exceções tratadas:
+        FileNotFoundError: Caso o ficheiro não exista.
+        json.JSONDecodeError: Caso o conteúdo do ficheiro não seja um JSON válido.
+        Exception: Captura quaisquer outros erros inesperados durante a execução.
+
+    Saída:
+        Imprime uma tabela com os utilizadores ou mensagens de erro apropriadas se houver problemas
+        com o ficheiro ou se a lista de utilizadores estiver vazia.
+
+    Exemplo de uso:
+        listar_utilizadores()
+    """
     try:
         caminho_ficheiro = os.path.join("src/jsons", ficheiro)
 
@@ -29,4 +51,13 @@ def listar_utilizadores(ficheiro="utilizadores.json"):
 
 
 def listagem_utilizadores():
+    """
+    Função auxiliar para iniciar a listagem de utilizadores.
+
+    Esta função simplesmente chama `listar_utilizadores()` sem argumentos, utilizando o ficheiro
+    padrão `utilizadores.json`.
+
+    Exemplo de uso:
+        listagem_utilizadores()
+    """
     listar_utilizadores()

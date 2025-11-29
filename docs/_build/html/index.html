@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ADCTP2 - Documentação &#8212; ADCTP2 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Módulos do Projeto" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="adctp2-documentacao">
+<h1>ADCTP2 - Documentação<a class="headerlink" href="#adctp2-documentacao" title="Link to this heading">¶</a></h1>
+</section>
+<section id="conteudo">
+<h1>Conteúdo<a class="headerlink" href="#conteudo" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Módulos do Projeto</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.html">Módulo principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes/creates.html">Funções de Criação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes/deletes.html">Funções de Remoção</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes/edits.html">Funções de Edição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes/lists.html">Funções de Listagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="funcoes/login_utilizadores.html">Login de Utilizadores</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="descricao-do-projeto">
+<h1>Descrição do Projeto<a class="headerlink" href="#descricao-do-projeto" title="Link to this heading">¶</a></h1>
+<p>Este projeto consiste no desenvolvimento de um sistema <strong>CRUD</strong> (Create, Read, Update, Delete) aplicado ao universo da <strong>Fórmula 1</strong>, utilizando ficheiros <strong>JSON</strong> como método principal de armazenamento de dados.
+O sistema permite gerir de forma simples e organizada várias entidades relacionadas com a modalidade, incluindo:</p>
+<ul class="simple">
+<li><p>Utilizadores e permissões</p></li>
+<li><p>Equipas</p></li>
+<li><p>Pilotos</p></li>
+<li><p>Chefes de equipa</p></li>
+<li><p>Membros de equipa</p></li>
+<li><p>Carros</p></li>
+<li><p>Corridas</p></li>
+<li><p>Pistas</p></li>
+</ul>
+<p>A aplicação funciona através de um <strong>menu interativo no terminal</strong>, que adapta as opções disponíveis consoante o nível de permissão do utilizador autenticado.
+As permissões possíveis são:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chefe</span> <span class="pre">de</span> <span class="pre">corrida</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIA</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utilizador</span></code></p></li>
+</ul>
+<p>Todos os dados criados, atualizados ou apagados são guardados em ficheiros JSON localizados na diretoria <code class="docutils literal notranslate"><span class="pre">src/jsons</span></code>.
+Esta abordagem permite uma forma simples, leve e legível de manter persistência de dados, sem necessidade de bases de dados externas.</p>
+<section id="objetivos-principais">
+<h2>Objetivos principais<a class="headerlink" href="#objetivos-principais" title="Link to this heading">¶</a></h2>
+<p>O projeto foi desenvolvido com foco em:</p>
+<ul class="simple">
+<li><p><strong>Simplicidade de utilização</strong></p></li>
+<li><p><strong>Estrutura modular do código</strong>, separando funcionalidades por categorias (creates, lists, edits, deletes)</p></li>
+<li><p><strong>Controlo eficaz de permissões</strong></p></li>
+<li><p><strong>Persistência de dados acessível e organizada</strong></p></li>
+<li><p><strong>Facilidade de manutenção e expansão futura</strong></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">ADCTP2</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Módulos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Módulos do Projeto</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="modules.html" title="next chapter">Módulos do Projeto</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

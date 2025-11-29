@@ -3,6 +3,27 @@ import os
 
 # Função para listar as equipas do ficheiro JSON
 def listar_membro_equipas(ficheiro="membro_equipas.json"):
+    """
+    Lista todos os membros de equipas armazenados em um ficheiro JSON.
+
+    Esta função lê os dados do ficheiro JSON especificado (por defeito `"membro_equipas.json"`) 
+    localizado na pasta `src/jsons` e imprime uma tabela formatada contendo informações sobre 
+    cada membro de equipa, incluindo nome, idade, salário, equipa atual, histórico de equipas e tipo.
+
+    Args:
+        ficheiro (str, opcional): Nome do ficheiro JSON a ser lido. Padrão é `"membro_equipas.json"`.
+
+    Exceções tratadas:
+        FileNotFoundError: Caso o ficheiro não exista.
+        json.JSONDecodeError: Caso o conteúdo do ficheiro não seja um JSON válido.
+
+    Saída:
+        Imprime uma tabela com os membros de equipa ou mensagens de erro apropriadas caso não haja
+        membros no ficheiro ou se ocorrer algum problema de leitura.
+
+    Exemplo de uso:
+        listar_membro_equipas()
+    """
     try:
         # Construir caminho para o ficheiro na pasta "Json"
         caminho_ficheiro = os.path.join("src/jsons", ficheiro)
@@ -28,4 +49,13 @@ def listar_membro_equipas(ficheiro="membro_equipas.json"):
 
 # Função principal
 def listagem_membro_equipas():
+    """
+    Função auxiliar para iniciar a listagem de membros de equipas.
+
+    Esta função chama `listar_membro_equipas()` sem argumentos, utilizando o ficheiro padrão
+    `"membro_equipas.json"`.
+
+    Exemplo de uso:
+        listagem_membro_equipas()
+    """
     listar_membro_equipas()
